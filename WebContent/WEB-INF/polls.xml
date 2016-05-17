@@ -1,0 +1,14 @@
+<polls>
+	<poll>
+		<name>Poll1</name>
+		<creator>Sam</creator>
+		<status>Open</status>
+		<options>
+			<option>
+				<id>1</id>
+				<name>Option 1</name>
+				<value>10.0</value>
+			</option>
+		</options>
+	</poll>
+</polls>
