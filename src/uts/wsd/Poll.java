@@ -46,4 +46,28 @@ public class Poll implements Serializable{
 		}
 		return null;
 	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
+	
+	public String getCreator(){
+		return creator;
+	}
+	
+	public void setCreator(String creator){
+		this.creator = creator;
+	}
+	
+	public String getStatus(){
+		return status;
+	}
+	
+	public void setStatus(String status){
+		this.status = status;
+	}
 }
