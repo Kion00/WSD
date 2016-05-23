@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+	<user>
+		<email>email@email.com</email>
+		<firstname>Sam</firstname>
+		<lastname>Taylor</lastname>
+		<password>password</password>
+		<studentnumber>12345</studentnumber>
+		<gender>male</gender>
+	</user>
+</users>

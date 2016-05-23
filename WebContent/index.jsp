@@ -2,12 +2,13 @@
 <%@page import="uts.wsd.*" %>
 <?xml-stylesheet type="text/xsl" href="index.xsl"?>
  
-<% String filePath = application.getRealPath("WEB-INF/polls.xml"); %>
+<% String filePath = application.getRealPath("WEB-INF/"); %>
 <jsp:useBean id="pollApp" class="uts.wsd.PollApplication" scope="application">
     <jsp:setProperty name="pollApp" property="filePath" value="<%=filePath%>"/>
 </jsp:useBean>
 <%
-pollApp.setFilePath(filePath); 
+pollApp.setFilePath(filePath);
+session.setAttribute("pollApp", pollApp);
 User user = (User)session.getAttribute("user");
 %>
 
