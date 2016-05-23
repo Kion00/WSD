@@ -3,7 +3,7 @@
 <?xml-stylesheet type="text/xsl" href="register.xsl"?>
 <page>
 	<heading>Register</heading>
-	<myform action="register.jsp" method="POST">
+	<myform action="registered.jsp" method="POST">
 	    <gender name="gender">Title:</gender>
 	    <field name="id">Student number:</field>
 	    <field name="firstname">First name:</field>
