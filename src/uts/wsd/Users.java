@@ -15,6 +15,10 @@ public class Users implements Serializable{
 	@XmlElement(name= "user")
 	private ArrayList<User> list = new ArrayList<User>();
 	
+	public Users(){
+		
+	}
+	
 	public ArrayList<User> getList(){
 		return list;
 	}
@@ -25,6 +29,17 @@ public class Users implements Serializable{
 	
 	public void removeUser(User user){
 		list.remove(user);
+	}
+	
+	public void print(){
+		for(User user : list){
+			System.out.println("Name: " + user.getFullName());
+			System.out.println("Email: " + user.getEmail());
+			System.out.println("Password: " + user.getPassword());
+			System.out.println("Id: " + user.getStudentNumber());
+			System.out.println("Gender: " + user.getGender());
+			System.out.println("--------------------------------");
+		}
 	}
 	
 	public User getUser(String email){
