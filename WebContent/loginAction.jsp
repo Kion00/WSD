@@ -6,7 +6,13 @@
 String email = request.getParameter("email");
 String password = request.getParameter("password");
 
-PollApplication pollApp = session.getAttribute("pollApp");
+PollApplication pollApp = (PollApplication)session.getAttribute("pollApp");
 
-if()
+if(pollApp.login(email, password) != null){
+	User user = pollApp.login(email, password);
+	session.setAttribute("user", user);
 %>
+<message>success</message>
+<%}else{%>
+<message>failed</message>
+<%} %>

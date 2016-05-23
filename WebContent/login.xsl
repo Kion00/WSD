@@ -20,7 +20,7 @@
 	
 	<xsl:template match="myform">
 		<div id="form">
-			<form action="{@action}" method="{@post}">
+			<form action="{@action}" method="{@method}">
 				<table width="100%">
 					<xsl:apply-templates/>
 				</table>
@@ -31,7 +31,7 @@
 	<xsl:template match="field">
 		<tr>
 			<td><xsl:value-of select="."/> </td>
-			<td><input type="text" name="{@name}"/></td>
+			<td><input type="{@type}" name="{@name}"/></td>
 		</tr>
 	</xsl:template>
 		

@@ -4,9 +4,9 @@
 
 <page>
 	<heading>Login</heading>
-	<myform action="logingAction.jsp" method="POST">
-		<field name="email">Email</field>
-		<field name="password">Password</field>
+	<myform action="loginAction.jsp" method="POST">
+		<field name="email" type="text">Email</field>
+		<field name="password" type="text">Password</field>
 		<button>Login</button>
 	</myform>
 </page>

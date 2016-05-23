@@ -10,6 +10,8 @@
 pollApp.setFilePath(filePath);
 session.setAttribute("pollApp", pollApp);
 User user = (User)session.getAttribute("user");
+System.out.println("User");
+System.out.println(user);
 %>
 
 <page title="Welcome">
@@ -22,6 +24,10 @@ User user = (User)session.getAttribute("user");
 			</poll>
 		<%}%>
 	</polls>
-	<usercontrol type=<%if(user==null){%>"login"<%}else{%>"loggedin"<%}%>></usercontrol>
+	<%if(user==null){%>
+		<usercontrol type="login"></usercontrol>
+	<%}else{%>
+		<usercontrol type="loggedIn"><%=user.getFullName()%></usercontrol>
+	<%}%>
 </page>
 

@@ -16,8 +16,8 @@ public class PollApplication {
 	public void setFilePath(String filepath){
 		this.filepath = filepath;
 		// Create the unmarshaller
-		loadPolls(this.filepath + "polls.xml");
-		loadPolls(this.filepath + "users.xml");
+		loadPolls(this.filepath + "/polls.xml");
+		loadUsers(this.filepath + "/users.xml");
 	}
 	
 	public void loadPolls(String filepath){
