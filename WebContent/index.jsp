@@ -1,28 +1,26 @@
 <%@page contentType="application/xml"%><?xml version="1.0" encoding="UTF-8"?>
+<%@page import="uts.wsd.*" %>
 <?xml-stylesheet type="text/xsl" href="index.xsl"?>
  
-<!-- insert jsp:useBean tag here -->
-<%%>
+<% String filePath = application.getRealPath("WEB-INF/polls.xml"); %>
+<jsp:useBean id="pollApp" class="uts.wsd.PollApplication" scope="application">
+    <jsp:setProperty name="pollApp" property="filePath" value="<%=filePath%>"/>
+</jsp:useBean>
+<%
+pollApp.setFilePath(filePath); 
+User user = (User)session.getAttribute("user");
+%>
+
 <page title="Welcome">
 	<heading>Polls</heading>
 	<polls>
-		<poll>
-			<name>When and Where</name>
-			<creator>Sam</creator>
-			<status>Open</status>
-		</poll>
-		<poll>
-			<name>When and Where</name>
-			<creator>Sam</creator>
-			<status>Open</status>
-		</poll>
-		<poll>
-			<name>When and Where</name>
-			<creator>Sam</creator>
-			<status>Open</status>
-		</poll>
+		<%for(int i=0; i < pollApp.getPolls().getPollCount(); i++){%>
+			<poll status='<%=pollApp.getPolls().getPoll(i).getStatus()%>'>
+				<name><%=pollApp.getPolls().getPoll(i).getName()%></name>
+				<creator><%=pollApp.getPolls().getPoll(i).getCreator()%></creator>
+			</poll>
+		<%}%>
 	</polls>
-	<usercontrol></usercontrol>
+	<usercontrol type=<%if(user==null){%>"login"<%}else{%>"loggedin"<%}%>></usercontrol>
 </page>
-
 

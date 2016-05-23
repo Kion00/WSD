@@ -4,14 +4,12 @@
 		<html>
 			<head>
 				<title><xsl:value-of select="@title"/></title>
-				<style>
-					.status{
-						background-color:#0F0;
-					}
-				</style>
+				<link rel="stylesheet" type="text/css" href="style/index.css"/>
 			</head>
 			<body>
-			<xsl:apply-templates/>
+				<div id="container">
+					<xsl:apply-templates/>
+				</div>
 			</body>
 		</html>
 	</xsl:template>
@@ -22,30 +20,50 @@
 	
 	<xsl:template match="polls">
 		<br/>
-		<a>
-			<table border="1">
-				<xsl:apply-templates/>
-			</table>
-		</a>
+		<xsl:apply-templates/>
 	</xsl:template>
 	
 	<xsl:template match="poll">
-		<tr><xsl:apply-templates/></tr>
+		<div class="poll">
+			<xsl:apply-templates/>
+			<xsl:choose>
+				<xsl:when test="@status = 'Open'">
+					<div class="attr"><b>Status: </b> <span class="statusOpen"><xsl:value-of select="@status"/></span></div>
+				</xsl:when>
+				<xsl:otherwise>
+					<div class="attr"><b>Status: </b> <span class="statusClosed"><xsl:value-of select="@status"/></span></div>
+				</xsl:otherwise>
+			</xsl:choose>
+		</div>
 	</xsl:template>
 	
 	<xsl:template match="name">
-		<td>Name: <xsl:value-of select="."/></td>
+		<div class="attr"><b>Name: </b> <xsl:value-of select="."/></div>
 	</xsl:template>
 	
 	<xsl:template match="creator">
-		<td>Creator: <xsl:value-of select="."/></td>
+		<div class="attr"><b>Creator: </b> <xsl:value-of select="."/></div>
 	</xsl:template>
 	
 	<xsl:template match="status">
-		<td class="status">Status: <xsl:value-of select="."/></td>
+		<xsl:choose>
+			<xsl:when test="status = 'Open'">
+				<div class="attr"><b>Status: </b> <span class="statusOpen"><xsl:value-of select="."/></span></div>
+			</xsl:when>
+			<xsl:otherwise>
+				<div class="attr"><b>Status: </b> <span class="statusClosed"><xsl:value-of select="."/></span></div>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 	
 	<xsl:template match="usercontrol">
-		<div>Login</div>
+		<xsl:choose>
+			<xsl:when test="@type = 'login'">
+				<div id="login"><a href="login.jsp">Login</a> | <a href="create.jsp">Create Account</a></div>
+			</xsl:when>
+			<xsl:otherwise>
+				<div id="loggedIn">Logged in as: </div>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 </xsl:stylesheet>

@@ -11,6 +11,8 @@ import javax.xml.bind.annotation.*;
 public class Poll implements Serializable{
 	
 	@XmlElement
+	private int id;
+	@XmlElement
 	private String name;
 	@XmlElement
 	private String creator;
@@ -45,6 +47,14 @@ public class Poll implements Serializable{
 			}
 		}
 		return null;
+	}
+	
+	public int getId(){
+		return id;
+	}
+	
+	public void setId(){
+		this.id = id;
 	}
 	
 	public String getName(){
