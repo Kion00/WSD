@@ -59,7 +59,7 @@
 	<xsl:template match="usercontrol">
 		<xsl:choose>
 			<xsl:when test="@type = 'login'">
-				<div id="login"><a href="login.jsp">Login</a> | <a href="create.jsp">Create Account</a></div>
+				<div id="login"><a href="login.jsp">Login</a> | <a href="register.jsp">Create Account</a></div>
 			</xsl:when>
 			<xsl:otherwise>
 				<div id="loggedIn">Logged in as <xsl:value-of select="."/> | <a href="">View Account</a> | <a href="logout.jsp">Logout</a></div>
