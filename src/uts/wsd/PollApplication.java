@@ -15,9 +15,11 @@ public class PollApplication {
 	
 	public void setFilePath(String filepath){
 		this.filepath = filepath;
-		// Create the unmarshaller
+
+		
 		loadPolls(this.filepath + "/polls.xml");
 		loadUsers(this.filepath + "/users.xml");
+		//users.print(); //To debug users.xml
 	}
 	
 	public void loadPolls(String filepath){
@@ -29,7 +31,7 @@ public class PollApplication {
 			FileInputStream fin = new FileInputStream(filepath);
 			this.polls = (Polls)u.unmarshal(fin); // This loads the "shop" object
 			fin.close();
-		}catch(Exception e){}
+		}catch(Exception e){System.out.println("Failed to load polls.xml");}
 	}
 	
 	public void loadUsers(String filepath){
@@ -41,7 +43,7 @@ public class PollApplication {
 			FileInputStream fin = new FileInputStream(filepath);
 			this.users = (Users)u.unmarshal(fin); // This loads the "shop" object
 			fin.close();
-		}catch(Exception e){}
+		}catch(Exception e){System.out.println("Failed to load users.xml");}
 	}
 	
 	public Polls getPolls(){
@@ -56,14 +58,20 @@ public class PollApplication {
 		return users.login(email, password);
 	}
 	
+	public void addUser(User user){
+		users.addUser(user);
+		exportUsers();
+	}
+	
 	public void exportPolls(){
 		try{
 			JAXBContext jc = JAXBContext.newInstance(Polls.class);
 			Marshaller m = jc.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			FileOutputStream os = new FileOutputStream(filepath + "polls.xml");
-			m.marshal(polls, System.out);
-		}catch(Exception e){}
+			FileOutputStream os = new FileOutputStream(filepath + "/polls.xml");
+			m.marshal(polls, os);
+			System.out.println("Successfully exported polls");
+		}catch(Exception e){System.out.println("Export polls failed");}
 	}
 	
 	public void exportUsers(){
@@ -71,8 +79,10 @@ public class PollApplication {
 			JAXBContext jc = JAXBContext.newInstance(Users.class);
 			Marshaller m = jc.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			FileOutputStream os = new FileOutputStream(filepath + "users.xml");
-			m.marshal(users, System.out);
-		}catch(Exception e){}
+			FileOutputStream os = new FileOutputStream(filepath + "/users.xml");
+			m.marshal(users, os);
+			//m.marshal(users, System.out);
+			System.out.println("Successfully exported users");
+		}catch(Exception e){System.out.println("Users export failed");}
 	}
 }

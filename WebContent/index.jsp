@@ -10,8 +10,6 @@
 pollApp.setFilePath(filePath);
 session.setAttribute("pollApp", pollApp);
 User user = (User)session.getAttribute("user");
-System.out.println("User");
-System.out.println(user);
 %>
 
 <page title="Welcome">

@@ -21,7 +21,7 @@
 	
 	<xsl:template match="myform">
 		<div id="form">
-			<form action="{@action}" method="{@post}">
+			<form action="{@action}" method="{@method}">
 				<table width="100%">
 					<xsl:apply-templates/>
 				</table>
