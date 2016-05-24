@@ -8,7 +8,7 @@
 =======
 <%@page contentType="application/xml"%><?xml version="1.0" encoding="UTF-8"?>
 <%@page import="uts.wsd.*" %>
-<?xml-stylesheet type="text/xsl" href="index.xsl"?>
+<?xml-stylesheet type="text/xsl" href="xsl/index.xsl"?>
  
 <% String filePath = application.getRealPath("WEB-INF/"); %>
 <jsp:useBean id="pollApp" class="uts.wsd.PollApplication" scope="application">
