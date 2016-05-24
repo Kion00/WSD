@@ -18,7 +18,7 @@
 		<div class="center">
 		<xsl:choose>
 				<xsl:when test=". = 'success'">
-					Login successful. Click <a href="index.jsp">here</a> to go to the main page.
+					Registration successful. Click <a href="index.jsp">here</a> to go to the main page.
 				</xsl:when>
 				<xsl:otherwise>
 					<div>Login failed. Click <a href="index.jsp">here</a> to go to the main page.</div>
