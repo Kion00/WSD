@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Schema"
+	xmlns:tns="http://www.example.org/Schema" elementFormDefault="qualified">
+
+	<xs:element name="polls">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="poll" maxOccurs="unbounded" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="id" />
+							<xs:element type="xs:string" name="name" />
+							<xs:element type="xs:date" name="status" />
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="option" maxOccurs="unbounded"
+										minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element type="xs:string" name="id" />
+												<xs:element name="names" type="xs:string">
+													<xs:element name="value" type="xs:float">
+													</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+				</xs:element>
+				<xs:element type="xs:string" name="status" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+	<xs:element name="web">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="welcome-file-list" minOccurs="0"
+					maxOccurs="10">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="welcome-file" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+
+
+					<xs:element name="servlet" minOccurs="0" maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="servlet-name" type="xs:string" />
+								<xs:element name="servlet-class" type="xs:string" />
+								<xs:element name="init-param" minOccurs="0"
+									maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="param-name" type="xs:string" />
+											<xs:element name="param-value" type="xs:string" />
+
+								</xs:element>
+								<xs:element name="load-on-startup" type="xs:int" />
+
+					</xs:element>
+					<xs:element name="servlet-mapping" minOccurs="0"
+						maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="servlet-name" type="xs:string" />
+								<xs:element name="url-pattern" type="xs:string" />
+
+					</xs:element>
+
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="users">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="users" maxOccurs="unbounded" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="user" maxOccurs="unbounded"
+								minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+
+										<xs:element name="email" type="xs:string" />
+										<xs:element name="firstname" type="xs:string" />
+										<xs:element name="lastname" type="xs:string" />
+										<xs:element name="password" type="xs:string" />
+										<xs:element name="studentnumber" type="xs:string" />
+										<xs:element name="gender" type="xs:string" />
+
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+
+</schema>

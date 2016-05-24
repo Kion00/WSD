@@ -9,8 +9,8 @@
 	    <field name="firstname">First name:</field>
 	    <field name="lastname">Last name:</field>
 		<field name="email">Enter your email:</field>
-		<field name="password">Set your password:</field>
-		<field name="password">Confirm your password:</field>
+		<field name="password1">Set your password:</field>
+		<field name="password2">Confirm your password:</field>
 		<button>Register</button>
 	</myform>
 </page>
