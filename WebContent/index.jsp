@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-<%@ page language="java" contentType="text/xml; charset=UTF-8"
-	pageEncoding="UTF-8" import="uts.wsd.*"%><?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="index.xsl"?>
- 
-<!--insert jsp:useBean tag here -->
-<%%>
-=======
 <%@page contentType="application/xml"%><?xml version="1.0" encoding="UTF-8"?>
 <%@page import="uts.wsd.*" %>
 <?xml-stylesheet type="text/xsl" href="xsl/index.xsl"?>
@@ -20,7 +12,6 @@ session.setAttribute("pollApp", pollApp);
 User user = (User)session.getAttribute("user");
 %>
 
->>>>>>> origin/master
 <page title="Welcome">
 	<heading>Polls</heading>
 	<polls>
