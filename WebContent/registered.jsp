@@ -1,6 +1,6 @@
 <%@page contentType="application/xml"%><?xml version="1.0" encoding="UTF-8"?>
 <%@page import="uts.wsd.*" %>
-<?xml-stylesheet type="text/xsl" href="registered.xsl"?>
+<?xml-stylesheet type="text/xsl" href="xsl/registered.xsl"?>
 <%
 	PollApplication pollApp = (PollApplication)session.getAttribute("pollApp");
 

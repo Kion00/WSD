@@ -4,7 +4,7 @@
 		<html>
 			<head>
 				<title><xsl:value-of select="@title"/></title>
-				<link rel="stylesheet" type="text/css" href="style/loginAction.css"/>
+				<link rel="stylesheet" type="text/css" href="style/registered.css"/>
 			</head>
 			<body>
 				<div id="container">
