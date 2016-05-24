@@ -6,7 +6,7 @@
 	<heading>Login</heading>
 	<myform action="loginAction.jsp" method="POST">
 		<field name="email" type="text">Email</field>
-		<field name="password" type="text">Password</field>
+		<field name="password" type="password">Password</field>
 		<button>Login</button>
 	</myform>
 </page>

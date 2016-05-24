@@ -32,9 +32,10 @@
 	<xsl:template match="field">
 		<tr>
 			<td><xsl:value-of select="."/> </td>
-			<td><input type="text" name="{@name}"/></td>
+			<td><input type="{@type}" name="{@name}"/></td>
 		</tr>
 	</xsl:template>
+	
 		
 	<xsl:template match="button">
 		<tr>
