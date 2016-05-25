@@ -31,9 +31,7 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-</xs:sequence>
-</xs:complexType>
-</xs:element>
+
 	<xs:element name="web">
 		<xs:complexType>
 			<xs:sequence>
@@ -103,8 +101,6 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-</xs:sequence>
-</xs:complexType>
-</xs:element>
+
 
 </schema>
