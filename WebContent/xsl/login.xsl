@@ -13,7 +13,24 @@
 			</body>
 		</html>
 	</xsl:template>
-	
+	<xsl:template match="navigation">
+		
+		<img onclick="goBack()" src="Images/Back arrow.png" style="width:40px; height:40px;"/>
+		<a href="index.jsp">
+		<img src="Images/home-icon.png" style="width:40px; height:40px;"/>
+		</a>
+		<img onclick="goForward()" src="Images/right arrow.jpg" style="width:40px; height:40px;"/>
+		
+		<script>
+function goBack() {
+    window.history.back();
+}
+
+function goForward(){
+	window.history.forward();
+}
+</script>	
+	</xsl:template>
 	<xsl:template match="heading">
 		<h1><xsl:apply-templates/></h1>
 	</xsl:template>

@@ -7,18 +7,38 @@
 				<title>
 					<xsl:value-of select="@title" />
 				</title>
+				<link rel="stylesheet" type="text/css" href="style/PollDetail.css"/>
 
 			</head>
 			<body>
-				<xsl:apply-templates />
+	<div id="container">
+					<xsl:apply-templates/>
+				</div>
 			</body>
 		</html>
 	</xsl:template>
+	
+	<xsl:template match="navigation">
+		
+		<img onclick="goBack()" src="Images/Back arrow.png" style="width:40px; height:40px;"/>
+		<a href="index.jsp">
+		<img src="Images/home-icon.png" style="width:40px; height:40px;"/>
+		</a>
+		<img onclick="goForward()" src="Images/right arrow.jpg" style="width:40px; height:40px;"/>
+		
+		<script>
+function goBack() {
+    window.history.back();
+}
+
+function goForward(){
+	window.history.forward();
+}
+</script>	
+	</xsl:template>
 
 	<xsl:template match="heading">
-		<h1 align="center">
-			<xsl:apply-templates />
-		</h1>
+	<h1><xsl:apply-templates /></h1>
 	</xsl:template>
 
 	<xsl:template match="date">
@@ -54,13 +74,12 @@
 		</table>
 	</xsl:template>
 	<xsl:template match="description">
-		<center>
-			<xsl:apply-templates />
-		</center>
+	<p>Description: <xsl:apply-templates /></p>
+		
 	</xsl:template>
 
 	<xsl:template match="time">
-		<center>
+
 			<table>
 				<form>
 					<tr>
@@ -73,13 +92,13 @@
 					</tr>
 				</form>
 			</table>
-		</center>
+		
 	</xsl:template>
 
 	<xsl:template match="button">
-		<center>
-			<button type="button">submit</button>
-		</center>
+		
+			<button type="button">Submit</button>
+		
 	</xsl:template>
 
 </xsl:stylesheet>

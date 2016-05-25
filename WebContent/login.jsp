@@ -3,6 +3,7 @@
 <?xml-stylesheet type="text/xsl" href="xsl/login.xsl"?>
 
 <page>
+	<navigation></navigation>
 	<heading>Login</heading>
 	<myform action="loginAction.jsp" method="POST">
 		<field name="email" type="text">Email</field>

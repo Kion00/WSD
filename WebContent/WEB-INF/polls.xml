@@ -15,7 +15,7 @@
 	<poll>
 		<id>1</id>
 		<name>Poll2</name>
-		<creator>Sam</creator>
+		<creator>Kian</creator>
 		<status>Open</status>
 		<options>
 			<option>
@@ -28,7 +28,7 @@
 	<poll>
 		<id>2</id>
 		<name>Poll3</name>
-		<creator>Sam</creator>
+		<creator>David</creator>
 		<status>Open</status>
 		<options>
 			<option>
@@ -41,8 +41,8 @@
 	<poll>
 		<id>3</id>
 		<name>Poll4</name>
-		<creator>Sam</creator>
-		<status>Open</status>
+		<creator>Bob</creator>
+		<status>Closed</status>
 		<options>
 			<option>
 				<id>0</id>

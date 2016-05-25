@@ -3,9 +3,9 @@
  
 
 <page title="Poll Detail">
+	<navigation></navigation>
 	<heading> Poll Detail </heading>
-
-	<creator></creator>
+	<creator>Kian</creator>
 	<date>21/05/2016</date>
 	<location>UTS B11.00.405</location>
 	<description>1st Group meeting</description>
