@@ -13,6 +13,7 @@ User user = (User)session.getAttribute("user");
 %>
 
 <page title="Welcome">
+	<navigation></navigation>
 	<heading>Polls</heading>
 	<polls>
 		<%for(int i=0; i < pollApp.getPolls().getPollCount(); i++){%>

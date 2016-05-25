@@ -2,6 +2,7 @@
 <%@page import="uts.wsd.*" %>
 <?xml-stylesheet type="text/xsl" href="xsl/register.xsl"?>
 <page>
+	<navigation>Home</navigation>
 	<heading>Register</heading>
 	<myform action="registered.jsp" method="POST">
 	    <gender name="gender">Title:</gender>
