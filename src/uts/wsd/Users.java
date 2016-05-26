@@ -38,6 +38,7 @@ public class Users implements Serializable{
 			System.out.println("Password: " + user.getPassword());
 			System.out.println("Id: " + user.getStudentNumber());
 			System.out.println("Gender: " + user.getGender());
+			System.out.println("UUID: " + user.getUUID());
 			System.out.println("--------------------------------");
 		}
 	}

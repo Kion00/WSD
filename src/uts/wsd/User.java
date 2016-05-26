@@ -1,6 +1,7 @@
 package uts.wsd;
 
 import java.io.Serializable;
+import java.util.Random;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -23,6 +24,8 @@ public class User implements Serializable{
 	private String studentNumber;
 	@XmlElement(name="gender")
 	private String gender;
+	@XmlElement(name="uuid")
+	private String uuid;
 	
 	public User(){
 		
@@ -35,6 +38,7 @@ public class User implements Serializable{
 		this.password = password;
 		this.studentNumber = studentNumber;
 		this.gender = gender;
+		this.uuid = generateUUID();
 	}
 	
 	public String getEmail() {
@@ -75,6 +79,29 @@ public class User implements Serializable{
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	
+	public String getUUID(){
+		return uuid;
+	}
+	
+	public void setUUID(String uuid){
+		this.uuid = uuid;
+	}
+	
+	public String generateUUID(){
+		String str;
+		String charset = "abcdefghijklmnopqrstuvwxyzABCEDFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		Random r = new Random();
+		do{
+			str = "";
+			for(int i=0; i<5; i++){
+				str += charset.charAt(r.nextInt(charset.length()));
+			}
+		}while(str == null);
+		//To implement checking for duplicate uuid
+		
+		return str;
 	}
 	
 	

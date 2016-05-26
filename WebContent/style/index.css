@@ -19,6 +19,7 @@
 .attr{
 	padding-right: 5px;
 	vertical-align:center;
+	display: inline-block;
 }
 
 .statusOpen{
@@ -27,5 +28,10 @@
 
 .statusClosed{
 	color: #F00
+}
+
+.open-poll{
+	float: right;
+	display: inline-block;
 }
 

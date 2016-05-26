@@ -9,6 +9,7 @@
 <%
 pollApp.setFilePath(filePath);
 session.setAttribute("pollApp", pollApp);
+//pollApp.getUsers().print();
 User user = (User)session.getAttribute("user");
 %>
 
@@ -16,9 +17,11 @@ User user = (User)session.getAttribute("user");
 	<heading>Polls</heading>
 	<polls>
 		<%for(int i=0; i < pollApp.getPolls().getPollCount(); i++){%>
-			<poll status='<%=pollApp.getPolls().getPoll(i).getStatus()%>'>
+			<poll>
 				<name><%=pollApp.getPolls().getPoll(i).getName()%></name>
 				<creator><%=pollApp.getPolls().getPoll(i).getCreator()%></creator>
+				<status s='<%=pollApp.getPolls().getPoll(i).getStatus()%>'></status>
+				<openPoll><%=i%></openPoll>
 			</poll>
 		<%}%>
 	</polls>

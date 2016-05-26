@@ -10,13 +10,15 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Poll implements Serializable{
 	
-	@XmlElement
+	@XmlElement(name = "id")
 	private int id;
-	@XmlElement
+	@XmlElement(name = "name")
 	private String name;
-	@XmlElement
+	@XmlElement(name = "creator")
 	private String creator;
-	@XmlElement
+	@XmlElement(name = "creatorid")
+	private String creatorid;
+	@XmlElement(name = "status")
 	private String status;
 	@XmlElement(name = "option")
 	private ArrayList<Option> list = new ArrayList<Option>();
@@ -25,9 +27,11 @@ public class Poll implements Serializable{
 		
 	}
 	
-	public Poll(String name, String creator, String status, ArrayList<Option> list){
+	public Poll(int id, String name, String creator, String creatorid, String status, ArrayList<Option> list){
+		this.id = id;
 		this.name = name;
 		this.creator = creator;
+		this.creatorid = creatorid;
 		this.status = status;
 		this.list = list;
 	}
@@ -53,7 +57,7 @@ public class Poll implements Serializable{
 		return id;
 	}
 	
-	public void setId(){
+	public void setId(int id){
 		this.id = id;
 	}
 	
@@ -71,6 +75,14 @@ public class Poll implements Serializable{
 	
 	public void setCreator(String creator){
 		this.creator = creator;
+	}
+	
+	public String getCreatoIDr(){
+		return creator;
+	}
+	
+	public void setCreatorID(String creatorid){
+		this.creatorid = creatorid;
 	}
 	
 	public String getStatus(){

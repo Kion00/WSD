@@ -1,5 +1,5 @@
 <%@page contentType="application/xml"%><?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="PollDetail.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/poll.xsl"?>
 
 <page title="Poll Detail">
 	<heading> Poll Detail </heading>
