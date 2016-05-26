@@ -13,9 +13,12 @@ session.setAttribute("pollApp", pollApp);
 User user = (User)session.getAttribute("user");
 %>
 
-<page title="Welcome">
+<page title="Polls">
+	<navigation></navigation>
 	<heading>Polls</heading>
 	<polls>
+		<!--If user is not logged in show only open polls-->
+	
 		<%for(int i=0; i < pollApp.getPolls().getPollCount(); i++){%>
 			<poll>
 				<name><%=pollApp.getPolls().getPoll(i).getName()%></name>
@@ -23,7 +26,8 @@ User user = (User)session.getAttribute("user");
 				<status s='<%=pollApp.getPolls().getPoll(i).getStatus()%>'></status>
 				<openPoll><%=i%></openPoll>
 			</poll>
-		<%}%>
+		<%}
+		%>
 	</polls>
 	<%if(user==null){%>
 		<usercontrol type="login"></usercontrol>

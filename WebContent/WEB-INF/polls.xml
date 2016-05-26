@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <polls>
+<<<<<<< HEAD
     <poll>
         <id>0</id>
         <name>Name</name>
@@ -12,4 +13,58 @@
             <value>1.0</value>
         </option>
     </poll>
+=======
+	<poll>
+		<id>0</id>
+		<name>Poll1</name>
+		<creator>Sam</creator>
+		<status>Open</status>
+		<options>
+			<option>
+				<id>0</id>
+				<name>Option 1</name>
+				<value>10.0</value>
+			</option>
+		</options>
+	</poll>
+	<poll>
+		<id>1</id>
+		<name>Poll2</name>
+		<creator>Kian</creator>
+		<status>Open</status>
+		<options>
+			<option>
+				<id>0</id>
+				<name>Option 1</name>
+				<value>10.0</value>
+			</option>
+		</options>
+	</poll>
+	<poll>
+		<id>2</id>
+		<name>Poll3</name>
+		<creator>David</creator>
+		<status>Open</status>
+		<options>
+			<option>
+				<id>0</id>
+				<name>Option 1</name>
+				<value>10.0</value>
+			</option>
+		</options>
+	</poll>
+	<poll>
+		<id>3</id>
+		<name>Poll4</name>
+		<creator>Bob</creator>
+		<status>Closed</status>
+		<options>
+			<option>
+				<id>0</id>
+				<name>Option 1</name>
+				<value>10.0</value>
+			</option>
+		</options>
+	</poll>
+>>>>>>> c1555d429a2668030450f101b68275c6a4da80c4
 </polls>
