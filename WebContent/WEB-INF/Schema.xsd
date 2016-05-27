@@ -69,7 +69,8 @@
 	</xs:simpleType>
 	<xs:simpleType name="email">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="([A-Z][a-z][1-9]+@[A-Z][a-z]?)"></xs:pattern>
+			<xs:pattern value="[a-z0-9A-Z]+([-|/.]?[a-z0-9A-Z])*@([a-z0-9A-Z]+
+(-[a-z0-9A-Z]+)?/.)+ [a-zA-Z]{2,}"></xs:pattern>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="lastname">
@@ -79,7 +80,8 @@
 	</xs:simpleType>
 	<xs:simpleType name="password">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="([A-Z][a-z][1-9]+)"></xs:pattern>
+		    <xs:minLength value="8"/>
+		    <xs:maxLength value="16"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="studentnumber">
