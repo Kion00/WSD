@@ -19,22 +19,19 @@
 	</xsl:template>
 	
 	<xsl:template match="navigation">
-		
 		<img onclick="goBack()" src="Images/Back arrow.png" style="width:40px; height:40px;"/>
-		<a href="index.jsp">
-		<img src="Images/home-icon.png" style="width:40px; height:40px;"/>
-		</a>
+		<a href="index.jsp"><img src="Images/home-icon.png" style="width:40px; height:40px;"/></a>
 		<img onclick="goForward()" src="Images/right arrow.jpg" style="width:40px; height:40px;"/>
 		
 		<script>
-function goBack() {
-    window.history.back();
-}
-
-function goForward(){
-	window.history.forward();
-}
-</script>	
+			function goBack() {
+			    window.history.back();
+			}
+			
+			function goForward(){
+				window.history.forward();
+			}
+		</script>	
 	</xsl:template>
 	
 	<xsl:template match="polls">
@@ -50,7 +47,7 @@ function goForward(){
 	
 	<xsl:template match="name">
 		
-		<div class="attr"><b>Name: </b><a href="PollDetail.jsp"> <xsl:value-of select="."/></a></div>
+		<div class="attr"><b>Name: </b><xsl:value-of select="."/></div>
 		
 	</xsl:template>
 	
@@ -62,7 +59,7 @@ function goForward(){
 	<xsl:template match="openPoll">
 		<div class="open-poll">
 			<form action="poll.jsp" method="POST">
-				<button type="submit" value="{.}">Open poll</button>
+				<button type="submit" name="id" value="{.}">Open poll</button>
 			</form>
 		</div>
 	</xsl:template>

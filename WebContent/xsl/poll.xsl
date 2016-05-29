@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:template match="/page">
+	<xsl:template match="/">
 		<html>
 			<head>
 				<title>
@@ -19,22 +19,19 @@
 	</xsl:template>
 	
 	<xsl:template match="navigation">
-		
 		<img onclick="goBack()" src="Images/Back arrow.png" style="width:40px; height:40px;"/>
-		<a href="index.jsp">
-		<img src="Images/home-icon.png" style="width:40px; height:40px;"/>
-		</a>
+		<a href="index.jsp"><img src="Images/home-icon.png" style="width:40px; height:40px;"/></a>
 		<img onclick="goForward()" src="Images/right arrow.jpg" style="width:40px; height:40px;"/>
 		
 		<script>
-function goBack() {
-    window.history.back();
-}
-
-function goForward(){
-	window.history.forward();
-}
-</script>	
+			function goBack() {
+			    window.history.back();
+			}
+			
+			function goForward(){
+				window.history.forward();
+			}
+		</script>	
 	</xsl:template>
 
 	<xsl:template match="heading">
@@ -79,7 +76,6 @@ function goForward(){
 	</xsl:template>
 
 	<xsl:template match="time">
-
 			<table>
 				<form>
 					<tr>
@@ -92,7 +88,6 @@ function goForward(){
 					</tr>
 				</form>
 			</table>
-		
 	</xsl:template>
 
 	<xsl:template match="button">

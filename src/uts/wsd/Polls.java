@@ -46,5 +46,17 @@ public class Polls {
 		return null;
 	}
 	
+	public void print(){
+		for(Poll poll: list){
+			System.out.println("Id: " + poll.getId());
+			System.out.println("Name: " + poll.getName());
+			System.out.println("Creator: " + poll.getCreator());
+			System.out.println("Id: " + poll.getCreatorID());
+			System.out.println("Status: " + poll.getStatus());
+			//System.out.println("UUID: " + user.getUUID());
+			System.out.println("--------------------------------");
+		}
+	}
+	
 	
 }

@@ -27,6 +27,11 @@ public class Poll implements Serializable{
 		
 	}
 	
+	/*
+	 * Creates a new poll
+	 * 
+	 * @param text PollID
+	 */
 	public Poll(int id, String name, String creator, String creatorid, String status, ArrayList<Option> list){
 		this.id = id;
 		this.name = name;
@@ -42,6 +47,10 @@ public class Poll implements Serializable{
 	
 	public void removeOption(Option option){
 		list.remove(option);
+	}
+	
+	public int getOptionCount(){
+		return list.size();
 	}
 	
 	public Option getOption(int id){
@@ -77,7 +86,7 @@ public class Poll implements Serializable{
 		this.creator = creator;
 	}
 	
-	public String getCreatoIDr(){
+	public String getCreatorID(){
 		return creator;
 	}
 	

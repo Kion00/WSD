@@ -36,9 +36,9 @@ public class PollApplication {
 		
 		loadPolls(this.filepath + "/polls.xml");
 		loadUsers(this.filepath + "/users.xml");
-		//users.print(); //To debug users.xml
 		
-		exportPolls();
+		//users.print(); //To debug users.xml
+		//polls.print();
 	}
 	
 	public void loadPolls(String filepath){

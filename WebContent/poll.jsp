@@ -1,20 +1,28 @@
-<<<<<<< HEAD:WebContent/poll.jsp
 <%@page contentType="application/xml"%><?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="/xsl/poll.xsl"?>
-=======
-<%@page contentType="application/xml" import="uts.wsd.*"%><?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="xsl/PollDetail.xsl"?>
- 
->>>>>>> c1555d429a2668030450f101b68275c6a4da80c4:WebContent/PollDetail.jsp
+<%@page import="uts.wsd.*" %>
+<?xml-stylesheet type="text/xsl" href="xsl/poll.xsl"?>
 
-<page title="Poll Detail">
+<%
+User user = (User)session.getAttribute("user");
+PollApplication pollApp = (PollApplication)session.getAttribute("pollApp");
+
+int pollID = Integer.parseInt(request.getParameter("id"));
+Poll poll = pollApp.getPolls().getPoll(pollID);
+%>
+
+<page title="">
 	<navigation></navigation>
-	<heading> Poll Detail </heading>
-	<creator>Kian</creator>
+	<heading><%=poll.getName()%></heading>
+	<creator><%=poll.getCreator()%></creator>
 	<date>21/05/2016</date>
 	<location>UTS B11.00.405</location>
 	<description>1st Group meeting</description>
-	<time>1:30</time>
-	<time>2:30</time>
+	
+	<%
+	for(int i=0; i < poll.getOptionCount(); i++){
+	%>
+	
+		<time><%=poll.getOption(i).getName()%></time>
+	<%}%>
 	<button></button>
 </page>
