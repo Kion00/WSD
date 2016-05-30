@@ -1,5 +1,5 @@
 <%@page contentType="application/xml"%><?xml version="1.0" encoding="UTF-8"?>
-<%@page import="uts.wsd.*" %>
+<%@page import="uts.wsd.*" import="java.util.ArrayList"%>
 <?xml-stylesheet type="text/xsl" href="xsl/index.xsl"?>
  
 <% String filePath = application.getRealPath("WEB-INF/"); %>
@@ -17,15 +17,23 @@ User user = (User)session.getAttribute("user");
 %>
 
 <page title="Polls">
-	<navigation></navigation>
-	<createPoll></createPoll>
+	<menu>
+		<navigation></navigation>
+		<createPoll></createPoll>
+		<%if(user==null){%>
+			<usercontrol type="login"></usercontrol>
+		<%}else{%>
+			<usercontrol type="loggedIn"><%=user.getFullName()%></usercontrol>
+		<%}%>
+	</menu>
 	<heading>Open Polls</heading>
 	<polls>
 		<!--If user is not logged in show only open polls-->
 	
 		<%
-		for(int i=0; i < pollApp.getPolls().getPollCount(); i++){
-		Poll poll = pollApp.getPolls().getPoll(i);
+		ArrayList<String> list = pollApp.getPolls().getOpenPolls();
+		for(int i=0; i < list.size(); i++){
+			Poll poll = pollApp.getPolls().getPoll(list.get(i));
 		%>
 			<poll>
 				<info>
@@ -37,15 +45,15 @@ User user = (User)session.getAttribute("user");
 					<%if(user != null){
 						if(user.getUUID().equals(poll.getCreatorID())){
 					%>
-							<closePoll><%=i%></closePoll>
-							<editPoll><%=i%></editPoll>
+							<closePoll><%=poll.getId()%></closePoll>
+							<editPoll><%=poll.getId()%></editPoll>
 					<%
 						}
 					}
 					%>
-					<results><%=i%></results>
+					<results><%=poll.getId()%></results>
 					<%if(poll.getStatus().equals("Open")){%>
-						<openPoll><%=i%></openPoll>
+						<openPoll><%=poll.getId()%></openPoll>
 					<%}%>
 				</buttons>
 			</poll>
@@ -54,12 +62,32 @@ User user = (User)session.getAttribute("user");
 	</polls>
 	<%if(user !=null){%>
 	<heading>Your Polls</heading>
+	<polls>
+		<!--If user is not logged in show only open polls-->
 	
-	<%}%>
-	<%if(user==null){%>
-		<usercontrol type="login"></usercontrol>
-	<%}else{%>
-		<usercontrol type="loggedIn"><%=user.getFullName()%></usercontrol>
+		<%
+		ArrayList<String> userlist = pollApp.getPolls().getPollsByCreator(user.getUUID());
+		for(int i=0; i < userlist.size(); i++){
+			Poll userpoll = pollApp.getPolls().getPoll(userlist.get(i));
+		%>
+			<poll>
+				<info>
+					<name><%=userpoll.getName()%></name>
+					<creator><%=userpoll.getCreator()%></creator>
+					<status s='<%=userpoll.getStatus()%>'></status>
+				</info>
+				<buttons>
+					<%if(userpoll.getStatus().equals("Open")){%><closePoll><%=userpoll.getId()%></closePoll><%}%>
+					<editPoll><%=userpoll.getId()%></editPoll>
+					<results><%=userpoll.getId()%></results>
+					<%if(userpoll.getStatus().equals("Open")){%>
+						<openPoll><%=userpoll.getId()%></openPoll>
+					<%}%>
+				</buttons>
+			</poll>
+		<%}
+		%>
+	</polls>
 	<%}%>
 </page>
 

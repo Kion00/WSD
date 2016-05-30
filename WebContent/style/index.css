@@ -1,7 +1,27 @@
 #container{
-	width: 600px;
+	width: 650px;
 	margin-left:auto;
 	margin-right: auto;
+}
+
+#menu{
+	margin: 10px;
+}
+
+#nav{
+	float:left;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.links{
+	float:leftt;
+	display: inline-block;
+}
+
+#user{
+	display: inline-block;
+	float:right;
 }
 
 .status{
@@ -61,4 +81,22 @@
 
 .create-poll{
 	margin-top: 20px;
+}
+
+a:link {
+    text-decoration: none;
+    color:
+}
+
+a:visited {
+    text-decoration: none;
+    color: #00F;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
 }

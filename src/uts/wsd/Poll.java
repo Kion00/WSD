@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.*;
 public class Poll implements Serializable{
 	
 	@XmlElement(name = "id")
-	private int id;
+	private String id;
 	@XmlElement(name = "name")
 	private String name;
 	@XmlElement(name = "creator")
@@ -50,7 +50,7 @@ public class Poll implements Serializable{
 	 * @param date Date
 	 * @param list option list
 	 */
-	public Poll(int id, String name, String creator, String creatorid, String status, String location, String description, String date, int firstTime, int lastTime, ArrayList<Response> list){
+	public Poll(String id, String name, String creator, String creatorid, String status, String location, String description, String date, int firstTime, int lastTime, ArrayList<Response> list){
 		this.id = id;
 		this.name = name;
 		this.creator = creator;
@@ -91,11 +91,11 @@ public class Poll implements Serializable{
 		return null;
 	}
 	
-	public int getId(){
+	public String getId(){
 		return id;
 	}
 	
-	public void setId(int id){
+	public void setId(String id){
 		this.id = id;
 	}
 	

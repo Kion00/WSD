@@ -23,12 +23,12 @@ if(first > last){
 	
 }else{
 	if(user != null){
-		pollApp.addPoll(pollApp.getPolls().getPollCount(), name, user.getFullName(), user.getUUID(), "Open", location, description, date, first, last, null);
+		pollApp.addPoll(name, user.getFullName(), user.getUUID(), "Open", location, description, date, first, last);
 	}else{
 		if(register != null){
 			
 		}else{
-			pollApp.addPoll(pollApp.getPolls().getPollCount(), name, creator, "00000", "Open", location, description, date, first, last, null);
+			pollApp.addPoll(name, creator, "00000", "Open", location, description, date, first, last);
 		}
 	}
 }

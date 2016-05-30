@@ -8,6 +8,8 @@ if(pollApp == null){
 	%><jsp:forward page="/index.jsp"/><%
 }
 User user = (User)session.getAttribute("user");
+
+if(user != null){
 %>
 
 <page>
@@ -57,3 +59,10 @@ User user = (User)session.getAttribute("user");
 		<button>Create Poll</button>
 	</myform>
 </page>
+<%}else{%>
+<page>
+	<navigation></navigation>
+	<heading>Create a Poll</heading>
+	<nouser></nouser>
+</page>
+<%}%>

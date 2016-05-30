@@ -12,7 +12,6 @@ if(pollApp == null){
 User user = (User)session.getAttribute("user");
 
 String id = request.getParameter("id");
-int pollID;
 Poll poll = null;
 
 
@@ -20,11 +19,10 @@ if(id == null){
 	System.out.println("page not found");
 	response.sendRedirect("poll404.jsp");
 }else{
-	pollID = Integer.parseInt(request.getParameter("id"));
-	if(pollApp.getPolls().getPoll(pollID) == null){
+	if(pollApp.getPolls().getPoll(id) == null){
 		response.sendRedirect("poll404.jsp"); 
 	}else{
-		poll = pollApp.getPolls().getPoll(pollID);
+		poll = pollApp.getPolls().getPoll(id);
 	}
 }
 
@@ -45,14 +43,14 @@ if(id == null){
 		int range = (poll.getLastTime() - poll.getFirstTime()) / 50;
 		int time = poll.getFirstTime();
 		for(int i=0; i < range; i++){
-				time+=30;
-				if(i % 2 != 0){
-					time+= 40;
-				}
-				Response r = poll.getResponse(time);
-				%>
+			Response r = poll.getResponse(time);
+			time+=30;
+			if(i % 2 != 0){
+				time+= 40;
+			}
+			%>
 			<time>
-				<value><%=pollApp.formatTime(time)%></value>
+				<value><%=pollApp.formatTime(r.getValue())%></value>
 				<num><%=r.getCount() %></num>
 				<%
 				String s = "";

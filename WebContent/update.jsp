@@ -10,8 +10,7 @@ if(pollApp == null){
 User user = (User)session.getAttribute("user");
 
 String id = request.getParameter("id");
-int pollID = Integer.parseInt(request.getParameter("id"));
-Poll poll = pollApp.getPolls().getPoll(pollID);
+Poll poll = pollApp.getPolls().getPoll(id);
 
 if(request.getParameter("submission")!= null){
 	String val[] = request.getParameterValues("time");
@@ -29,5 +28,5 @@ if(request.getParameter("submission")!= null){
 }
 pollApp.exportPolls();
 
-response.sendRedirect("results.jsp?id=" + pollID);
+response.sendRedirect("results.jsp?id=" + id);
 %>

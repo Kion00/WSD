@@ -14,24 +14,46 @@
 		</html>
 	</xsl:template>
 	
-	<xsl:template match="heading">
-		<h1><xsl:apply-templates/></h1>
+	<xsl:template match="navigation">
+		<div id="nav">
+			<img onclick="goBack()" src="Images/Back arrow.png" style="width:40px; height:40px;"/>
+			<a href="index.jsp"><img src="Images/home-icon.png" style="width:40px; height:40px;"/></a>
+			<img onclick="goForward()" src="Images/right arrow.jpg" style="width:40px; height:40px;"/>
+			
+			<script>
+				function goBack() {
+				    window.history.back();
+				}
+				
+				function goForward(){
+					window.history.forward();
+				}
+			</script>
+		</div>	
 	</xsl:template>
 	
-	<xsl:template match="navigation">
-		<img onclick="goBack()" src="Images/Back arrow.png" style="width:40px; height:40px;"/>
-		<a href="index.jsp"><img src="Images/home-icon.png" style="width:40px; height:40px;"/></a>
-		<img onclick="goForward()" src="Images/right arrow.jpg" style="width:40px; height:40px;"/>
-		
-		<script>
-			function goBack() {
-			    window.history.back();
-			}
-			
-			function goForward(){
-				window.history.forward();
-			}
-		</script>	
+	<xsl:template match="menu">
+		<div id="links">
+			<xsl:apply-templates/>
+		</div>
+		<br/>
+	</xsl:template>
+	
+	<xsl:template match="usercontrol">
+		<div id="user">
+			<xsl:choose>
+				<xsl:when test="@type = 'login'">
+					<div id="login"><a href="login.jsp">Login</a> | <a href="register.jsp">Create Account</a></div>
+				</xsl:when>
+				<xsl:otherwise>
+					<div id="loggedIn">Logged in as <xsl:value-of select="."/> | <a href="index.jsp">View Account</a> | <a href="logout.jsp">Logout</a></div>
+				</xsl:otherwise>
+			</xsl:choose>
+		</div>
+	</xsl:template>
+	
+	<xsl:template match="heading">
+		<h1><xsl:apply-templates/></h1>
 	</xsl:template>
 	
 	<xsl:template match="polls">
@@ -88,10 +110,8 @@
 	</xsl:template>
 	
 	<xsl:template match="createPoll">
-		<div class="create-poll">
-			<form action="new.jsp" method="POST">
-				<button type="submit">Create Poll</button>
-			</form>
+		<div class="links">
+			<a href="new.jsp">Create Poll</a>
 		</div>
 	</xsl:template>
 	
@@ -115,14 +135,4 @@
 		</xsl:choose>
 	</xsl:template>
 	
-	<xsl:template match="usercontrol">
-		<xsl:choose>
-			<xsl:when test="@type = 'login'">
-				<div id="login"><a href="login.jsp">Login</a> | <a href="register.jsp">Create Account</a></div>
-			</xsl:when>
-			<xsl:otherwise>
-				<div id="loggedIn">Logged in as <xsl:value-of select="."/> | <a href="index.jsp">View Account</a> | <a href="logout.jsp">Logout</a></div>
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:template>
 </xsl:stylesheet>

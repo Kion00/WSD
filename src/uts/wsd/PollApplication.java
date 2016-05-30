@@ -24,16 +24,16 @@ public class PollApplication {
 		//users.addUser(new User("mail@gmail.com", "first", "last", "password", "87654321", "male"));
 		//exportUsers();
 		
-		/*
 		polls = new Polls();
-		polls.addPoll(new Poll(0, "Poll1", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 800, 2000, createResponses(800, 2000)));
-		polls.addPoll(new Poll(1, "Poll2", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
-		polls.addPoll(new Poll(2, "Poll3", "Creator", "GDQZD", "Closed", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
-		polls.addPoll(new Poll(3, "Poll4", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
+		polls.addPoll(new Poll(generatePollUID(), "Poll1", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 800, 2000, createResponses(800, 2000)));
+		polls.addPoll(new Poll(generatePollUID(), "Poll2", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
+		polls.addPoll(new Poll(generatePollUID(), "Poll3", "Creator", "GDQZD", "Closed", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
+		polls.addPoll(new Poll(generatePollUID(), "Poll4", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
 		//polls.print();
 		
 		exportPolls();
-		*/
+
+		
 		
 		loadPolls(this.filepath + "/polls.xml");
 		loadUsers(this.filepath + "/users.xml");
@@ -124,9 +124,23 @@ public class PollApplication {
 		return hour + ":" + minute;
 	}
 	
-	public void addPoll(int id, String name, String creator, String creatorid, String status, String location, String description, String date, int firstTime, int lastTime){
-		getPolls().addPoll(new Poll(id, name, creator, creatorid, status, location, description, date, firstTime, lastTime, createResponses(firstTime, lastTime)));
+	public void addPoll(String name, String creator, String creatorid, String status, String location, String description, String date, int firstTime, int lastTime){
+		getPolls().addPoll(new Poll(generatePollUID(), name, creator, creatorid, status, location, description, date, firstTime, lastTime, createResponses(firstTime, lastTime)));
 		exportPolls();
+	}
+	
+	public String generatePollUID(){
+		String str;
+		String charset = "abcdefghijklmnopqrstuvwxyzABCEDFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		Random r = new Random();
+		do{
+			str = "";
+			for(int i=0; i<5; i++){
+				str += charset.charAt(r.nextInt(charset.length()));
+			}
+		}while(str.equals("00000") || !polls.checkPollUID(str));
+		//To implement checking for duplicate uuid
+		return str;
 	}
 	
 	public String generateUUID(){
@@ -138,7 +152,7 @@ public class PollApplication {
 			for(int i=0; i<5; i++){
 				str += charset.charAt(r.nextInt(charset.length()));
 			}
-		}while(str != "00000" || !users.checkUUID(str));
+		}while(str.equals("00000") || !users.checkUUID(str));
 		//To implement checking for duplicate uuid
 		
 		return str;

@@ -79,4 +79,7 @@
 			<td><input type="submit" value="{.}"/></td>
 		</tr>
 	</xsl:template>
+	<xsl:template match="nouser">
+		<p>Only registered users can create polls. Please <a href="login.jsp">login</a> or <a href="register.jsp">create an account</a> to be able to create a poll.</p>
+	</xsl:template>
 </xsl:stylesheet>

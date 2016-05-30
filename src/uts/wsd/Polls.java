@@ -27,19 +27,31 @@ public class Polls {
 		return list.size();
 	}
 	
-	public int getActivePolls(){
-		int count =0;
+	public ArrayList<String>  getOpenPolls(){
+		ArrayList<String> ids = new ArrayList<String>();
+		
 		for(Poll poll: list){
 			if(poll.getStatus().equals("Open")){
-				count++;
+				ids.add(poll.getId());
 			}
 		}
-		return count;
+		return ids;
 	}
 	
-	public Poll getPoll(int id){
+	public ArrayList<String> getPollsByCreator(String id){
+		ArrayList<String> ids = new ArrayList<String>();
+		
 		for(Poll poll: list){
-			if(poll.getId() == id){
+			if(poll.getCreatorID().equals(id)){
+				ids.add(poll.getId());
+			}
+		}
+		return ids;
+	}
+	
+	public Poll getPoll(String id){
+		for(Poll poll: list){
+			if(poll.getId().equals(id)){
 				return poll;
 			}
 		}
@@ -61,6 +73,16 @@ public class Polls {
 			poll.print();
 			System.out.println("--------------------------------");
 		}
+	}
+	
+	public boolean checkPollUID(String test){
+		for(Poll poll : list){
+			if(poll.getId().equals(test)){
+				return false;
+			}
+		}
+
+		return true;
 	}
 	
 	

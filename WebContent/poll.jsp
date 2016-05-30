@@ -11,18 +11,16 @@ if(pollApp == null){
 User user = (User)session.getAttribute("user");
 
 String id = request.getParameter("id");
-int pollID;
 Poll poll = null;
 
 
 if(id == null){
 	%><jsp:forward page="/poll404.jsp"/><%
 }else{
-	pollID = Integer.parseInt(request.getParameter("id"));
-	if(pollApp.getPolls().getPoll(pollID) == null){
+	if(pollApp.getPolls().getPoll(id) == null){
 		%><jsp:forward page="/poll404.jsp"/><% 
 	}else{
-		poll = pollApp.getPolls().getPoll(pollID);
+		poll = pollApp.getPolls().getPoll(id);
 	}
 }
 %>
