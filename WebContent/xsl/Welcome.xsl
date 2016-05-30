@@ -7,13 +7,22 @@
 								
 			</head>
 			<body>
-			<center>
-			<img src="Images/University_of_Technology_Sydney_logo.jpg" alt="UTS Logo"  style="width:304px;height:228px;"/>
-			</center>
-			<xsl:apply-templates/>
+			<div id="container">
+					<xsl:apply-templates/>
+				</div>
+			
+			
 			</body>
 		</html>
 	</xsl:template>
+	
+	<xsl:template match="img">
+	<center>
+			<img src="Images/University_of_Technology_Sydney_logo.jpg" alt="UTS Logo"  style="width:304px;height:228px;"/>
+	</center>
+	<xsl:apply-templates/>
+	</xsl:template>
+	
 	
 	<xsl:template match="heading">
 	<h1 align="center"><xsl:apply-templates/></h1>

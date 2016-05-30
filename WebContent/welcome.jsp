@@ -2,6 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="xsl/Welcome.xsl"?>
 
 <page title="Welcome">
+	<img></img>
 	<heading> Welcome </heading>
 	<polls> View Polls </polls>
 </page>
