@@ -70,9 +70,7 @@
 
 	<xsl:template match="times">
 		<br/>
-		Responses:
-		<br/>
-		<br/>
+		<h3>Responses:</h3>
 		<table>
 			<xsl:apply-templates />
 		</table>
@@ -82,7 +80,7 @@
 	<xsl:template match="time">
 		<tr>
 			<td>
-				<input type="radio" name="time" value="{.}" />
+				<b>Time: </b> 
 			</td>
 			<td>
 				<xsl:apply-templates />

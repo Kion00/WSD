@@ -18,7 +18,6 @@ String description = request.getParameter("description");
 int first = Integer.parseInt(request.getParameter("first"));
 int last = Integer.parseInt(request.getParameter("last"));
 String register = request.getParameter("register");
-System.out.println(register);
 
 if(first > last){
 	

@@ -67,6 +67,16 @@
 			<td>Description: </td><td><xsl:apply-templates /></td>
 		</tr>
 	</xsl:template>
+	
+	<xsl:template match="myform">
+		<div id="form">
+			<form action="{@action}" method="{@method}">
+				<table width="100%">
+					<xsl:apply-templates/>
+				</table>
+			</form>
+		</div>
+	</xsl:template>
 
 	<xsl:template match="times">
 		<br/>
@@ -82,7 +92,7 @@
 	<xsl:template match="time">
 		<tr>
 			<td>
-				<input type="radio" name="time" value="{.}" />
+				<input type="checkbox" name="time" value="{@val}" />
 			</td>
 			<td>
 				<xsl:apply-templates />
@@ -92,7 +102,7 @@
 	
 
 	<xsl:template match="button">
-		<button type="button"><xsl:apply-templates /></button>
+		<button type="submit" name="id" value="{@id}"><xsl:apply-templates /></button>
 	</xsl:template>
 
 </xsl:stylesheet>

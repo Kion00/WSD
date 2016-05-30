@@ -26,6 +26,14 @@ if(id == null){
 		poll = pollApp.getPolls().getPoll(pollID);
 	}
 }
+
+if(request.getParameter("submission")!= null){
+	String val[] = request.getParameterValues("time");
+	for(int i=0; i <val.length; i++){
+		System.out.println(val[i]);
+	}
+}
+
 %>
 
 <page title="">

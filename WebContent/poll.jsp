@@ -43,7 +43,7 @@ if(id == null){
 		int time = poll.getFirstTime();
 		for(int i=0; i < range+1; i++){
 		%>
-			<time>
+			<time val="<%=time%>">
 			<%=pollApp.formatTime(time)%>
 			<%
 			time+=30;
@@ -54,6 +54,6 @@ if(id == null){
 			</time>
 		<%}%>
 		</times>
-		<button>Vote Time</button>
+		<button id="<%=id%>">Vote Time</button>
 	</myform>
 </page>

@@ -7,12 +7,17 @@ String email = request.getParameter("email");
 String password = request.getParameter("password");
 
 PollApplication pollApp = (PollApplication)session.getAttribute("pollApp");
+if(pollApp == null){
+	System.out.println("pollApp was null, redirecting");
+	%><jsp:forward page="/index.jsp"/><%
+}
 
 if(pollApp.login(email, password) != null){
 	User user = pollApp.login(email, password);
 	session.setAttribute("user", user);
 %>
 <message>success</message>
+<jsp:forward page="/index.jsp"/>
 <%}else{%>
 <message>failed</message>
 <%} %>

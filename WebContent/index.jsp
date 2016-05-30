@@ -13,12 +13,13 @@ if(session.getAttribute("pollApp") == null){
 }
 //pollApp.getUsers().print();
 User user = (User)session.getAttribute("user");
+
 %>
 
 <page title="Polls">
 	<navigation></navigation>
-	<heading>Polls</heading>
 	<createPoll></createPoll>
+	<heading>Open Polls</heading>
 	<polls>
 		<!--If user is not logged in show only open polls-->
 	
@@ -27,26 +28,34 @@ User user = (User)session.getAttribute("user");
 		Poll poll = pollApp.getPolls().getPoll(i);
 		%>
 			<poll>
-				<name><%=poll.getName()%></name>
-				<creator><%=poll.getCreator()%></creator>
-				<status s='<%=poll.getStatus()%>'></status>
-				<%if(user != null){
-					if(user.getUUID().equals(poll.getCreatorID())){
-				%>
-						<closePoll><%=i%></closePoll>
-						<editPoll><%=i%></editPoll>
-				<%
+				<info>
+					<name><%=poll.getName()%></name>
+					<creator><%=poll.getCreator()%></creator>
+					<status s='<%=poll.getStatus()%>'></status>
+				</info>
+				<buttons>
+					<%if(user != null){
+						if(user.getUUID().equals(poll.getCreatorID())){
+					%>
+							<closePoll><%=i%></closePoll>
+							<editPoll><%=i%></editPoll>
+					<%
+						}
 					}
-				}
-				%>
-				<results><%=i%></results>
-				<%if(poll.getStatus().equals("Open")){%>
-					<openPoll><%=i%></openPoll>
-				<%}%>
+					%>
+					<results><%=i%></results>
+					<%if(poll.getStatus().equals("Open")){%>
+						<openPoll><%=i%></openPoll>
+					<%}%>
+				</buttons>
 			</poll>
 		<%}
 		%>
 	</polls>
+	<%if(user !=null){%>
+	<heading>Your Polls</heading>
+	
+	<%}%>
 	<%if(user==null){%>
 		<usercontrol type="login"></usercontrol>
 	<%}else{%>

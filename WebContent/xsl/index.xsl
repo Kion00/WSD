@@ -45,16 +45,23 @@
 		</div>
 	</xsl:template>
 	
+	<xsl:template match="info">
+		<div class="info"><xsl:apply-templates/></div>
+	</xsl:template>
+	
 	<xsl:template match="name">
-		
 		<div class="attr"><b>Name: </b><xsl:value-of select="."/></div>
-		
 	</xsl:template>
 	
 	<xsl:template match="creator">
 		<div class="attr"><b>Creator: </b> <xsl:value-of select="."/></div>
 	</xsl:template>
 
+	<xsl:template match="buttons">
+		<div class="buttons">
+			<xsl:apply-templates/>
+		</div>
+	</xsl:template>
 	
 	<xsl:template match="openPoll">
 		<div class="open-poll">
@@ -114,7 +121,7 @@
 				<div id="login"><a href="login.jsp">Login</a> | <a href="register.jsp">Create Account</a></div>
 			</xsl:when>
 			<xsl:otherwise>
-				<div id="loggedIn">Logged in as <xsl:value-of select="."/> | <a href="">View Account</a> | <a href="logout.jsp">Logout</a></div>
+				<div id="loggedIn">Logged in as <xsl:value-of select="."/> | <a href="index.jsp">View Account</a> | <a href="logout.jsp">Logout</a></div>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>

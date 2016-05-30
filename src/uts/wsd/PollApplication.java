@@ -36,6 +36,7 @@ public class PollApplication {
 		
 		exportPolls();
 		*/
+	
 		
 		
 		loadPolls(this.filepath + "/polls.xml");

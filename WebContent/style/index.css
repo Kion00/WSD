@@ -16,10 +16,13 @@
 	border-radius: 2px;
 }
 
+.info{
+	display:inline-block;
+}
+
 .attr{
 	padding-right: 5px;
 	vertical-align:center;
-	display: inline-block;
 }
 
 .statusOpen{
@@ -50,3 +53,12 @@
 	display: inline-block;
 }
 
+.buttons{
+	float:right;
+	display:inline-block;
+	padding-top:40px;
+}
+
+.create-poll{
+	margin-top: 20px;
+}
