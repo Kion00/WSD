@@ -66,7 +66,7 @@ User user = (User)session.getAttribute("user");
 		<!--If user is not logged in show only open polls-->
 	
 		<%
-		ArrayList<String> userlist = pollApp.getPolls().getPollsByCreator(user.getUUID());
+		ArrayList<String> userlist = pollApp.getPolls().getIdsByCreator(user.getUUID());
 		for(int i=0; i < userlist.size(); i++){
 			Poll userpoll = pollApp.getPolls().getPoll(userlist.get(i));
 		%>

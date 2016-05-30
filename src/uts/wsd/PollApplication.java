@@ -19,6 +19,8 @@ public class PollApplication {
 	public void setFilePath(String filepath){
 		this.filepath = filepath;
 		
+		System.out.println("init");
+		
 		populatePolls();
 		populateUsers();
 		
@@ -27,12 +29,13 @@ public class PollApplication {
 		
 		//users.print(); //To debug users.xml
 		//polls.print();
+		
 	}
 	
 	public void populatePolls(){
 		polls = new Polls();
 		polls.addPoll(new Poll(generatePollUID(), "Poll1", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 800, 2000, createResponses(800, 2000)));
-		polls.addPoll(new Poll(generatePollUID(), "Poll2", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
+		polls.addPoll(new Poll(generatePollUID(), "Poll2", "Creator", "GasZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
 		polls.addPoll(new Poll(generatePollUID(), "Poll3", "Creator", "GDQZD", "Closed", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
 		polls.addPoll(new Poll(generatePollUID(), "Poll4", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
 		//polls.print();

@@ -11,6 +11,14 @@ public class Polls {
 	@XmlElement(name = "poll")
 	ArrayList<Poll> list = new ArrayList<Poll>();
 	
+	public Polls(){
+		
+	}
+	
+	public Polls(ArrayList<Poll> list){
+		this.list = list;
+	}
+	
 	public ArrayList<Poll> getList(){
 		return list;
 	}
@@ -27,7 +35,9 @@ public class Polls {
 		return list.size();
 	}
 	
-	public ArrayList<String>  getOpenPolls(){
+	
+	
+	public ArrayList<String> getOpenPolls(){
 		ArrayList<String> ids = new ArrayList<String>();
 		
 		for(Poll poll: list){
@@ -38,7 +48,7 @@ public class Polls {
 		return ids;
 	}
 	
-	public ArrayList<String> getPollsByCreator(String id){
+	public ArrayList<String> getIdsByCreator(String id){
 		ArrayList<String> ids = new ArrayList<String>();
 		
 		for(Poll poll: list){
@@ -56,6 +66,37 @@ public class Polls {
 			}
 		}
 		return null;
+	}
+	
+	public ArrayList<Poll> getPollsByStatus(String status){
+		ArrayList<Poll> polls = new ArrayList<Poll>();
+		for(Poll poll: list){
+			if(poll.getStatus().equals(status)){
+				polls.add(poll);
+			}
+		}
+		return polls;
+	}
+	
+	public ArrayList<Poll> getPollsByCreator(String id){
+		ArrayList<Poll> polls = new ArrayList<Poll>();
+		for(Poll poll: list){
+			if(poll.getCreatorID().equals(id)){
+				polls.add(poll);
+			}
+		}
+		return polls;
+	}
+	
+	public ArrayList<Poll> getPollsByResponses(int count){
+		ArrayList<Poll> polls = new ArrayList<Poll>();
+		
+		for(Poll poll: list){
+			if(count <= poll.getTotalResponses()){
+				polls.add(poll);
+			}
+		}
+		return polls;
 	}
 	
 	public void print(){

@@ -82,6 +82,14 @@ public class Poll implements Serializable{
 		return list.size();
 	}
 	
+	public int getTotalResponses(){
+		int n = 0;
+		for(Response response: list){
+			n+= response.getCount();
+		}
+		return n;
+	}
+	
 	public Response getResponse(int value){
 		for(Response response: list){
 			if(response.getValue() == value){
