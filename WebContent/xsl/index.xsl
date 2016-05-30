@@ -103,7 +103,7 @@
 	
 	<xsl:template match="closePoll">
 		<div class="close-poll">
-			<form action="results.jsp" method="POST">
+			<form action="close.jsp" method="POST">
 				<button type="submit" name="close" value="{.}">Close Poll</button>
 			</form>
 		</div>

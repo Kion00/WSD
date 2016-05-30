@@ -37,6 +37,7 @@ if(id == null){
 		<location><%=poll.getLocation()%></location>
 		<description><%=poll.getDescription()%></description>
 	</info>
+	<%if(poll.getStatus().equals("Closed")){ %><closed></closed><%} %>
 	<myform action="results.jsp" method="POST">
 		<times>
 		<%

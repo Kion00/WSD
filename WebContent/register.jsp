@@ -10,7 +10,7 @@
 	    <field type ="text" name="firstname">First name:</field>
 	    <field type ="text" name="lastname">Last name:</field>
 		<field type ="text" name="email">Email:</field>
-		<field type ="password" name="password">Password(8-16words):</field>
+		<field type ="password" name="password">Password(8-16 characters):</field>
 		<button>Register</button>
 	</myform>
 </page>

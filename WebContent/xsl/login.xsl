@@ -48,7 +48,7 @@ function goForward(){
 	<xsl:template match="field">
 		<tr>
 			<td><xsl:value-of select="."/> </td>
-			<td><input type="{@type}" name="{@name}"/></td>
+			<td><input type="{@type}" name="{@name}" value="{@value}"/></td>
 		</tr>
 	</xsl:template>
 		
@@ -56,6 +56,11 @@ function goForward(){
 		<tr>
 			<td><input type="submit" value="{.}"/></td>
 		</tr>
+	</xsl:template>
+	
+	<xsl:template match="failed">
+		<div id="failed">Unable to login. Email or password incorrect. Please try again.</div>
+		<br/>
 	</xsl:template>
 
 </xsl:stylesheet>

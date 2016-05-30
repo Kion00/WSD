@@ -17,22 +17,16 @@ String location = request.getParameter("location");
 String description = request.getParameter("description");
 int first = Integer.parseInt(request.getParameter("first"));
 int last = Integer.parseInt(request.getParameter("last"));
-String register = request.getParameter("register");
+
+String failedPoll[] = new String[]{name, creator, date, location, description, Integer.toString(first), Integer.toString(last)};
+
+session.setAttribute("failed", failedPoll);
 
 if(first > last){
-	
+	response.sendRedirect("new.jsp");
 }else{
-	if(user != null){
-		pollApp.addPoll(name, user.getFullName(), user.getUUID(), "Open", location, description, date, first, last);
-	}else{
-		if(register != null){
-			
-		}else{
-			pollApp.addPoll(name, creator, "00000", "Open", location, description, date, first, last);
-		}
-	}
+	String id = pollApp.addPoll(name, user.getFullName(), user.getUUID(), "Open", location, description, date, first, last);
+	response.sendRedirect("poll.jsp?id=" + id);
 }
-
-
 
 %>

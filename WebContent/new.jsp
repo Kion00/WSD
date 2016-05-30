@@ -9,18 +9,27 @@ if(pollApp == null){
 }
 User user = (User)session.getAttribute("user");
 
+String vals[] = (String[])session.getAttribute("failed");
+
 if(user != null){
 %>
 
 <page>
-	<navigation></navigation>
+	<menu>
+		<navigation></navigation>
+		<createPoll></createPoll>
+		<%if(user==null){%>
+			<usercontrol type="login"></usercontrol>
+		<%}else{%>
+			<usercontrol type="loggedIn"><%=user.getFullName()%></usercontrol>
+		<%}%>
+	</menu>
 	<heading>Create a Poll</heading>
 	<myform action="create.jsp" method="POST">
 		<field name="name" type="text">Name:</field>
 		<field name="date" type="text">Date:</field>
 		<field name="location" type="text">Location:</field>
 		<field name="description" type="text">Description:</field>
-		<%if(user == null){ %><field name="creator" type="text">Your Name:</field><%} %>
 		<dropbox name="first" text="First Available Time">
 			<%
 			int range = (2000 - 800) / 50;
@@ -55,7 +64,6 @@ if(user != null){
 				</option>
 			<%}%>
 		</dropbox>
-		<%if(user == null){ %><register></register><%} %>
 		<button>Create Poll</button>
 	</myform>
 </page>

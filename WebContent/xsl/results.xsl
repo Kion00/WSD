@@ -97,5 +97,10 @@
 	<xsl:template match="button">
 		<button type="button"><xsl:apply-templates /></button>
 	</xsl:template>
+	
+	<xsl:template match="closed">
+		<br/>
+		<div class="closed">This poll is now closed.</div>
+	</xsl:template>
 
 </xsl:stylesheet>

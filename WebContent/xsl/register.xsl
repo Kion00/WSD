@@ -51,7 +51,7 @@ function goForward(){
 	<xsl:template match="field">
 		<tr>
 			<td><xsl:value-of select="."/> </td>
-			<td><input type="{@type}" name="{@name}"/></td>
+			<td><input type="{@type}" name="{@name}" value="{@value}"/></td>
 		</tr>
 	</xsl:template>
 	

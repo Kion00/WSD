@@ -19,3 +19,7 @@
 .num{
 	display: inline-block;
 }
+
+.closed{
+	color: red;
+}

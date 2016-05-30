@@ -21,8 +21,8 @@ public class PollApplication {
 		
 		System.out.println("init");
 		
-		populatePolls();
-		populateUsers();
+		//populatePolls();
+		//populateUsers();
 		
 		loadPolls(this.filepath + "/polls.xml");
 		loadUsers(this.filepath + "/users.xml");
@@ -34,7 +34,7 @@ public class PollApplication {
 	
 	public void populatePolls(){
 		polls = new Polls();
-		polls.addPoll(new Poll(generatePollUID(), "Poll1", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 800, 2000, createResponses(800, 2000)));
+		polls.addPoll(new Poll("00000", "Poll1", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 800, 2000, createResponses(800, 2000)));
 		polls.addPoll(new Poll(generatePollUID(), "Poll2", "Creator", "GasZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
 		polls.addPoll(new Poll(generatePollUID(), "Poll3", "Creator", "GDQZD", "Closed", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
 		polls.addPoll(new Poll(generatePollUID(), "Poll4", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
@@ -132,9 +132,11 @@ public class PollApplication {
 		return hour + ":" + minute;
 	}
 	
-	public void addPoll(String name, String creator, String creatorid, String status, String location, String description, String date, int firstTime, int lastTime){
-		getPolls().addPoll(new Poll(generatePollUID(), name, creator, creatorid, status, location, description, date, firstTime, lastTime, createResponses(firstTime, lastTime)));
+	public String addPoll(String name, String creator, String creatorid, String status, String location, String description, String date, int firstTime, int lastTime){
+		String id = generatePollUID();
+		getPolls().addPoll(new Poll(id, name, creator, creatorid, status, location, description, date, firstTime, lastTime, createResponses(firstTime, lastTime)));
 		exportPolls();
+		return id;
 	}
 	
 	public String generatePollUID(){
@@ -181,5 +183,9 @@ public class PollApplication {
 		}
 		
 		return list;
+	}
+	
+	public void closePoll(String id){
+		polls.getPoll(id).setStatus("Closed");
 	}
 }
