@@ -7,8 +7,10 @@
     <jsp:setProperty name="pollApp" property="filePath" value="<%=filePath%>"/>
 </jsp:useBean>
 <%
-pollApp.setFilePath(filePath);
-session.setAttribute("pollApp", pollApp);
+if(session.getAttribute("pollApp") == null){
+	pollApp.setFilePath(filePath);
+	session.setAttribute("pollApp", pollApp);
+}
 //pollApp.getUsers().print();
 User user = (User)session.getAttribute("user");
 %>
@@ -16,15 +18,31 @@ User user = (User)session.getAttribute("user");
 <page title="Polls">
 	<navigation></navigation>
 	<heading>Polls</heading>
+	<createPoll></createPoll>
 	<polls>
 		<!--If user is not logged in show only open polls-->
 	
-		<%for(int i=0; i < pollApp.getPolls().getPollCount(); i++){%>
+		<%
+		for(int i=0; i < pollApp.getPolls().getPollCount(); i++){
+		Poll poll = pollApp.getPolls().getPoll(i);
+		%>
 			<poll>
-				<name><%=pollApp.getPolls().getPoll(i).getName()%></name>
-				<creator><%=pollApp.getPolls().getPoll(i).getCreator()%></creator>
-				<status s='<%=pollApp.getPolls().getPoll(i).getStatus()%>'></status>
-				<openPoll><%=i%></openPoll>
+				<name><%=poll.getName()%></name>
+				<creator><%=poll.getCreator()%></creator>
+				<status s='<%=poll.getStatus()%>'></status>
+				<%if(user != null){
+					if(user.getUUID().equals(poll.getCreatorID())){
+				%>
+						<closePoll><%=i%></closePoll>
+						<editPoll><%=i%></editPoll>
+				<%
+					}
+				}
+				%>
+				<results><%=i%></results>
+				<%if(poll.getStatus().equals("Open")){%>
+					<openPoll><%=i%></openPoll>
+				<%}%>
 			</poll>
 		<%}
 		%>

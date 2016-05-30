@@ -3,6 +3,7 @@ package uts.wsd;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -23,22 +24,25 @@ public class PollApplication {
 		//users.addUser(new User("mail@gmail.com", "first", "last", "password", "87654321", "male"));
 		//exportUsers();
 		
-		/*polls = new Polls();
+		/*
+		polls = new Polls();
 		ArrayList<Option> al = new ArrayList<Option>();
 		al.add(new Option(0, "name", 1.0));
-		polls.addPoll(new Poll(0, "Poll1", "Creator", "GDQZD", "Open", al));
-		polls.addPoll(new Poll(1, "Poll2", "Creator", "GDQZD", "Open", al));
-		polls.addPoll(new Poll(2, "Poll3", "Creator", "GDQZD", "Open", al));
-		polls.addPoll(new Poll(3, "Poll4", "Creator", "GDQZD", "Open", al));
+		polls.addPoll(new Poll(0, "Poll1", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 800, 2000, al));
+		polls.addPoll(new Poll(1, "Poll2", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, al));
+		polls.addPoll(new Poll(2, "Poll3", "Creator", "GDQZD", "Closed", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600,al));
+		polls.addPoll(new Poll(3, "Poll4", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600,al));
+
 		
 		exportPolls();
 		*/
 		
+		
 		loadPolls(this.filepath + "/polls.xml");
 		loadUsers(this.filepath + "/users.xml");
 		
-		//users.print(); //To debug users.xml
-		//polls.print();
+		users.print(); //To debug users.xml
+		polls.print();
 	}
 	
 	public void loadPolls(String filepath){
@@ -105,5 +109,40 @@ public class PollApplication {
 			//m.marshal(users, System.out);
 			System.out.println("Successfully exported users");
 		}catch(Exception e){System.out.println("Users export failed");}
+	}
+	
+	public String formatTime(int in){
+		String hour;
+		String minute = "00";
+		
+		if(in % 100 != 0){
+			in-=30;
+			minute="30";
+		}
+		int o = (in / 100);
+		hour = Integer.toString(o);
+		
+		
+		return hour + ":" + minute;
+	}
+	
+	public void addPoll(int id, String name, String creator, String creatorid, String status, String location, String description, String date, int firstTime, int lastTime, ArrayList<Option> list){
+		getPolls().addPoll(new Poll(id, name, creator, creatorid, status, location, description, date, firstTime, lastTime, list));
+		exportPolls();
+	}
+	
+	public String generateUUID(){
+		String str;
+		String charset = "abcdefghijklmnopqrstuvwxyzABCEDFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		Random r = new Random();
+		do{
+			str = "";
+			for(int i=0; i<5; i++){
+				str += charset.charAt(r.nextInt(charset.length()));
+			}
+		}while(str != "00000" || !users.checkUUID(str));
+		//To implement checking for duplicate uuid
+		
+		return str;
 	}
 }

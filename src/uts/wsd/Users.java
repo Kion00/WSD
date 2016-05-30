@@ -2,6 +2,7 @@ package uts.wsd;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -59,5 +60,15 @@ public class Users implements Serializable{
 			}
 		}
 		return null;
+	}
+	
+	public boolean checkUUID(String test){
+		for(User user : list){
+			if(user.getUUID().equals(test)){
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }

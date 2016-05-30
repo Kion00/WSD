@@ -7,7 +7,7 @@
 				<title>
 					<xsl:value-of select="@title" />
 				</title>
-				<link rel="stylesheet" type="text/css" href="style/poll.css"/>
+				<link rel="stylesheet" type="text/css" href="style/results.css"/>
 
 			</head>
 			<body>
@@ -70,7 +70,7 @@
 
 	<xsl:template match="times">
 		<br/>
-		Available Times:
+		Responses:
 		<br/>
 		<br/>
 		<table>

@@ -31,14 +31,14 @@ public class User implements Serializable{
 		
 	}
 	
-	public User(String email, String firstName, String lastName, String password, String studentNumber, String gender) {
+	public User(String email, String firstName, String lastName, String password, String studentNumber, String gender, String uuid) {
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
 		this.studentNumber = studentNumber;
 		this.gender = gender;
-		this.uuid = generateUUID();
+		this.uuid = uuid;
 	}
 	
 	public String getEmail() {
@@ -87,21 +87,6 @@ public class User implements Serializable{
 	
 	public void setUUID(String uuid){
 		this.uuid = uuid;
-	}
-	
-	public String generateUUID(){
-		String str;
-		String charset = "abcdefghijklmnopqrstuvwxyzABCEDFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		Random r = new Random();
-		do{
-			str = "";
-			for(int i=0; i<5; i++){
-				str += charset.charAt(r.nextInt(charset.length()));
-			}
-		}while(str == null);
-		//To implement checking for duplicate uuid
-		
-		return str;
 	}
 	
 	

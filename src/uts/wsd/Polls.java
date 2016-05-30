@@ -53,7 +53,11 @@ public class Polls {
 			System.out.println("Creator: " + poll.getCreator());
 			System.out.println("Id: " + poll.getCreatorID());
 			System.out.println("Status: " + poll.getStatus());
-			//System.out.println("UUID: " + user.getUUID());
+			System.out.println("Location: " + poll.getLocation());
+			System.out.println("Description: " + poll.getDescription());
+			System.out.println("Date: " + poll.getDate());
+			System.out.println("First Time: " + poll.getFirstTime());
+			System.out.println("Last Time: " + poll.getLastTime());
 			System.out.println("--------------------------------");
 		}
 	}

@@ -1,8 +1,9 @@
 <%@page contentType="application/xml"%><?xml version="1.0" encoding="UTF-8"?>
 <%@page import="uts.wsd.*" %>
-<?xml-stylesheet type="text/xsl" href="xsl/poll.xsl"?>
+<?xml-stylesheet type="text/xsl" href="xsl/results.xsl"?>
 
 <%
+
 PollApplication pollApp = (PollApplication)session.getAttribute("pollApp");
 if(pollApp == null){
 	System.out.println("pollApp was null, redirecting");
@@ -41,16 +42,16 @@ if(id == null){
 		<%
 		int range = (poll.getLastTime() - poll.getFirstTime()) / 50;
 		int time = poll.getFirstTime();
-		for(int i=0; i < range+1; i++){
+		for(int i=0; i < range; i++){
 		%>
 			<time>
-			<%=pollApp.formatTime(time)%>
 			<%
 			time+=30;
 			if(i % 2 != 0){
 				time+= 40;
 			}
 			%>
+			<%=pollApp.formatTime(time)%>
 			</time>
 		<%}%>
 		</times>

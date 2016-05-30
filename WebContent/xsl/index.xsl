@@ -58,8 +58,40 @@
 	
 	<xsl:template match="openPoll">
 		<div class="open-poll">
-			<form action="poll.jsp" method="POST">
-				<button type="submit" name="id" value="{.}">Open poll</button>
+			<form action="poll.jsp" method="GET">
+				<button type="submit" name="id" value="{.}">Open Poll</button>
+			</form>
+		</div>
+	</xsl:template>
+	
+	<xsl:template match="editPoll">
+		<div class="edit-poll">
+			<form action="edit.jsp" method="POST">
+				<button type="submit" name="id" value="{.}">Edit Poll</button>
+			</form>
+		</div>
+	</xsl:template>
+	
+	<xsl:template match="closePoll">
+		<div class="close-poll">
+			<form action="results.jsp" method="POST">
+				<button type="submit" name="close" value="{.}">Close Poll</button>
+			</form>
+		</div>
+	</xsl:template>
+	
+	<xsl:template match="createPoll">
+		<div class="create-poll">
+			<form action="new.jsp" method="POST">
+				<button type="submit">Create Poll</button>
+			</form>
+		</div>
+	</xsl:template>
+	
+	<xsl:template match="results">
+		<div class="results">
+			<form action="results.jsp" method="GET">
+				<button type="submit" name="id" value="{.}">View Results</button>
 			</form>
 		</div>
 	</xsl:template>

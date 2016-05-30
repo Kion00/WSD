@@ -35,3 +35,18 @@
 	display: inline-block;
 }
 
+.edit-poll{
+	float: right;
+	display: inline-block;
+}
+
+.close-poll{
+	float: right;
+	display: inline-block;
+}
+
+.results{
+	float: right;
+	display: inline-block;
+}
+
