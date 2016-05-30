@@ -19,11 +19,17 @@ public class PollApplication {
 	public void setFilePath(String filepath){
 		this.filepath = filepath;
 		
-		//users = new Users();
-		//users.addUser(new User("email@email.com", "first", "last", "password", "12345678", "male"));
-		//users.addUser(new User("mail@gmail.com", "first", "last", "password", "87654321", "male"));
-		//exportUsers();
+		populatePolls();
+		populateUsers();
 		
+		loadPolls(this.filepath + "/polls.xml");
+		loadUsers(this.filepath + "/users.xml");
+		
+		//users.print(); //To debug users.xml
+		//polls.print();
+	}
+	
+	public void populatePolls(){
 		polls = new Polls();
 		polls.addPoll(new Poll(generatePollUID(), "Poll1", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 800, 2000, createResponses(800, 2000)));
 		polls.addPoll(new Poll(generatePollUID(), "Poll2", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
@@ -32,14 +38,13 @@ public class PollApplication {
 		//polls.print();
 		
 		exportPolls();
-
-		
-		
-		loadPolls(this.filepath + "/polls.xml");
-		loadUsers(this.filepath + "/users.xml");
-		
-		//users.print(); //To debug users.xml
-		//polls.print();
+	}
+	
+	public void populateUsers(){
+		users = new Users();
+		users.addUser(new User("email@email.com", "first", "last", "password", "12345678", "male", "GDQZD"));
+		users.addUser(new User("mail@gmail.com", "first", "last", "password", "87654321", "male", generateUUID()));
+		exportUsers();
 	}
 	
 	public void loadPolls(String filepath){
