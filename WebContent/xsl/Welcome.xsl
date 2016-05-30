@@ -1,44 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template match="/page">
 		<html>
 			<head>
-				<title>
-					<xsl:value-of select="@title" />
-				</title>
-
+				<title><xsl:value-of select="@title"/></title>
+								
 			</head>
 			<body>
-				<div id="container">
-					<xsl:apply-templates />
+			<div id="container">
+					<xsl:apply-templates/>
 				</div>
+			
+			
 			</body>
 		</html>
 	</xsl:template>
-
+	
 	<xsl:template match="img">
-		<center>
-			<img src="Images/University_of_Technology_Sydney_logo.jpg" alt="UTS Logo"
-				style="width:304px;height:228px;" />
-		</center>
-		<xsl:apply-templates />
+	<center>
+			<img src="Images/University_of_Technology_Sydney_logo.jpg" alt="UTS Logo"  style="width:304px;height:228px;"/>
+	</center>
+	<xsl:apply-templates/>
 	</xsl:template>
-
-
+	
+	
 	<xsl:template match="heading">
-		<h1 align="center">
-			<xsl:apply-templates />
-		</h1>
+	<h1 align="center"><xsl:apply-templates/></h1>
 	</xsl:template>
-
+	
 	<xsl:template match="polls">
-		<div style="text-align:center">
-			<a href="index.jsp">
-				<xsl:apply-templates />
-			</a>
-		</div>
+	<div style="text-align:center">
+	<a href = "index.jsp"> <xsl:apply-templates/> </a>
+	</div>
 	</xsl:template>
-
-
+	
+	
 </xsl:stylesheet>
