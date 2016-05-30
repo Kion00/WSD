@@ -17,20 +17,14 @@ Poll poll = null;
 
 
 if(id == null){
-	%><jsp:forward page="/poll404.jsp"/><%
+	System.out.println("page not found");
+	response.sendRedirect("poll404.jsp");
 }else{
 	pollID = Integer.parseInt(request.getParameter("id"));
 	if(pollApp.getPolls().getPoll(pollID) == null){
-		%><jsp:forward page="/poll404.jsp"/><% 
+		response.sendRedirect("poll404.jsp"); 
 	}else{
 		poll = pollApp.getPolls().getPoll(pollID);
-	}
-}
-
-if(request.getParameter("submission")!= null){
-	String val[] = request.getParameterValues("time");
-	for(int i=0; i <val.length; i++){
-		System.out.println(val[i]);
 	}
 }
 
@@ -51,18 +45,25 @@ if(request.getParameter("submission")!= null){
 		int range = (poll.getLastTime() - poll.getFirstTime()) / 50;
 		int time = poll.getFirstTime();
 		for(int i=0; i < range; i++){
-		%>
+				time+=30;
+				if(i % 2 != 0){
+					time+= 40;
+				}
+				Response r = poll.getResponse(time);
+				%>
 			<time>
-			<%
-			time+=30;
-			if(i % 2 != 0){
-				time+= 40;
-			}
-			%>
-			<%=pollApp.formatTime(time)%>
+				<value><%=pollApp.formatTime(time)%></value>
+				<num><%=r.getCount() %></num>
+				<%
+				String s = "";
+				for(int n=0; n<r.getCount(); n++){
+					if(n > 0) s+= ", ";
+					s += r.getName(n);
+				}
+				%>
+				<names><%=s %></names>
 			</time>
 		<%}%>
 		</times>
-		<button>Vote Time</button>
 	</myform>
 </page>

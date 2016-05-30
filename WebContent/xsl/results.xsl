@@ -71,21 +71,26 @@
 	<xsl:template match="times">
 		<br/>
 		<h3>Responses:</h3>
-		<table>
+		<div id="times">
 			<xsl:apply-templates />
-		</table>
+		</div>
 		<br/>
 	</xsl:template>
 	
 	<xsl:template match="time">
-		<tr>
-			<td>
-				<b>Time: </b> 
-			</td>
-			<td>
-				<xsl:apply-templates />
-			</td>
-		</tr>
+		<div class="time"><xsl:apply-templates /></div>
+	</xsl:template>
+	
+	<xsl:template match="value">
+		<div class="value"><b>Time: </b><xsl:apply-templates /></div>
+	</xsl:template>
+	
+	<xsl:template match="num">
+		<div class="num"><b>Number of votes: </b><xsl:apply-templates /></div>
+	</xsl:template>
+	
+	<xsl:template match="names">
+		<div class="names">People who voted: <xsl:apply-templates /></div>
 	</xsl:template>
 	
 

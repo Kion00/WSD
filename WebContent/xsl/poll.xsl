@@ -77,6 +77,15 @@
 			</form>
 		</div>
 	</xsl:template>
+	
+	<xsl:template match="field">
+		<table width="60%">
+			<tr>
+				<td><xsl:value-of select="."/> </td>
+				<td><input type="{@type}" name="{@name}"/></td>
+			</tr>
+		</table>
+	</xsl:template>
 
 	<xsl:template match="times">
 		<br/>
@@ -102,6 +111,7 @@
 	
 
 	<xsl:template match="button">
+		<input type="hidden" name="submission" value="true"/>
 		<button type="submit" name="id" value="{@id}"><xsl:apply-templates /></button>
 	</xsl:template>
 

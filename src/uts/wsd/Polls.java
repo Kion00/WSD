@@ -58,6 +58,7 @@ public class Polls {
 			System.out.println("Date: " + poll.getDate());
 			System.out.println("First Time: " + poll.getFirstTime());
 			System.out.println("Last Time: " + poll.getLastTime());
+			poll.print();
 			System.out.println("--------------------------------");
 		}
 	}

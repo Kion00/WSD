@@ -3,3 +3,19 @@
 	margin-left:auto;
 	margin-right: auto;
 }
+
+.time{
+	border: 1px solid #000;
+	border-radius: 2px;
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.value{
+	display: inline-block;
+}
+
+.num{
+	display: inline-block;
+}

@@ -26,24 +26,20 @@ public class PollApplication {
 		
 		/*
 		polls = new Polls();
-		ArrayList<Option> al = new ArrayList<Option>();
-		al.add(new Option(0, "name", 1.0));
-		polls.addPoll(new Poll(0, "Poll1", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 800, 2000, al));
-		polls.addPoll(new Poll(1, "Poll2", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, al));
-		polls.addPoll(new Poll(2, "Poll3", "Creator", "GDQZD", "Closed", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600,al));
-		polls.addPoll(new Poll(3, "Poll4", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600,al));
-
+		polls.addPoll(new Poll(0, "Poll1", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 800, 2000, createResponses(800, 2000)));
+		polls.addPoll(new Poll(1, "Poll2", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
+		polls.addPoll(new Poll(2, "Poll3", "Creator", "GDQZD", "Closed", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
+		polls.addPoll(new Poll(3, "Poll4", "Creator", "GDQZD", "Open", "B10.B1.403", "Group Meeting", "1/1/1", 1200, 1600, createResponses(1200, 1600)));
+		//polls.print();
 		
 		exportPolls();
 		*/
-	
-		
 		
 		loadPolls(this.filepath + "/polls.xml");
 		loadUsers(this.filepath + "/users.xml");
 		
-		users.print(); //To debug users.xml
-		polls.print();
+		//users.print(); //To debug users.xml
+		//polls.print();
 	}
 	
 	public void loadPolls(String filepath){
@@ -96,8 +92,9 @@ public class PollApplication {
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			FileOutputStream os = new FileOutputStream(filepath + "/polls.xml");
 			m.marshal(polls, os);
+			//m.marshal(polls, System.out);
 			System.out.println("Successfully exported polls");
-		}catch(Exception e){System.out.println("Export polls failed");}
+		}catch(Exception e){System.out.println("Export polls failed");e.printStackTrace();}
 	}
 	
 	public void exportUsers(){
@@ -127,8 +124,8 @@ public class PollApplication {
 		return hour + ":" + minute;
 	}
 	
-	public void addPoll(int id, String name, String creator, String creatorid, String status, String location, String description, String date, int firstTime, int lastTime, ArrayList<Option> list){
-		getPolls().addPoll(new Poll(id, name, creator, creatorid, status, location, description, date, firstTime, lastTime, list));
+	public void addPoll(int id, String name, String creator, String creatorid, String status, String location, String description, String date, int firstTime, int lastTime){
+		getPolls().addPoll(new Poll(id, name, creator, creatorid, status, location, description, date, firstTime, lastTime, createResponses(firstTime, lastTime)));
 		exportPolls();
 	}
 	
@@ -145,5 +142,22 @@ public class PollApplication {
 		//To implement checking for duplicate uuid
 		
 		return str;
+	}
+	
+	public ArrayList<Response> createResponses(int first, int last){
+		ArrayList<Response> list = new ArrayList<Response>();
+		
+		int num = (last-first) / 50;
+		
+		int value = first;
+		for(int i=0; i < num+1; i++){
+			list.add(new Response(value));
+			value+=30;
+			if(i % 2 != 0){
+				value+= 40;
+			}
+		}
+		
+		return list;
 	}
 }

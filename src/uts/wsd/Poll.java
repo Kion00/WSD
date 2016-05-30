@@ -30,8 +30,8 @@ public class Poll implements Serializable{
 	private int firstTime;
 	@XmlElement(name = "lasttime")
 	private int lastTime;
-	@XmlElement(name = "option")
-	private ArrayList<Option> list = new ArrayList<Option>();
+	@XmlElement(name = "response")
+	private ArrayList<Response> list = new ArrayList<Response>();
 	
 	public Poll(){
 		
@@ -50,7 +50,7 @@ public class Poll implements Serializable{
 	 * @param date Date
 	 * @param list option list
 	 */
-	public Poll(int id, String name, String creator, String creatorid, String status, String location, String description, String date, int firstTime, int lastTime, ArrayList<Option> list){
+	public Poll(int id, String name, String creator, String creatorid, String status, String location, String description, String date, int firstTime, int lastTime, ArrayList<Response> list){
 		this.id = id;
 		this.name = name;
 		this.creator = creator;
@@ -70,22 +70,22 @@ public class Poll implements Serializable{
 	 * @param text Option
 	 */
 	
-	public void addOption(Option option){
-		list.add(option);
+	public void addResponse(Response response){
+		list.add(response);
 	}
 	
-	public void removeOption(Option option){
-		list.remove(option);
+	public void removeResponse(Response response){
+		list.remove(response);
 	}
 	
-	public int getOptionCount(){
+	public int getResponseCount(){
 		return list.size();
 	}
 	
-	public Option getOption(int id){
-		for(Option option: list){
-			if(option.getId() == id){
-				return option;
+	public Response getResponse(int value){
+		for(Response response: list){
+			if(response.getValue() == value){
+				return response;
 			}
 		}
 		return null;
@@ -169,5 +169,12 @@ public class Poll implements Serializable{
 
 	public void setLastTime(int lastTime) {
 		this.lastTime = lastTime;
+	}
+	
+	public void print(){
+		for(Response response: list){
+			System.out.println("################################");
+			response.print();
+		}
 	}
 }

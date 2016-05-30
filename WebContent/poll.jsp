@@ -27,7 +27,7 @@ if(id == null){
 }
 %>
 
-<page title="">
+<page title="Poll">
 	<navigation></navigation>
 	<info>
 		<heading><%=poll.getName()%></heading>
@@ -36,7 +36,7 @@ if(id == null){
 		<location><%=poll.getLocation()%></location>
 		<description><%=poll.getDescription()%></description>
 	</info>
-	<myform action="results.jsp" method="POST">
+	<myform action="update.jsp" method="POST">
 		<times>
 		<%
 		int range = (poll.getLastTime() - poll.getFirstTime()) / 50;
@@ -54,6 +54,9 @@ if(id == null){
 			</time>
 		<%}%>
 		</times>
-		<button id="<%=id%>">Vote Time</button>
+		<%if(user == null){%>
+		<field name="name" type="text">Your name: </field>
+		<%}%>
+		<button id="<%=id%>">Submit Times</button>
 	</myform>
 </page>
