@@ -1,7 +1,8 @@
 <%@page contentType="application/xml"%><?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="xsl/welcome.xsl"?>
+<?xml-stylesheet type="text/xsl" href="xsl/Welcome.xsl"?>
 
 <page title="Welcome">
+	<img></img>
 	<heading> Welcome </heading>
 	<polls> View Polls </polls>
 </page>
