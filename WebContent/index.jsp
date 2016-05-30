@@ -46,7 +46,6 @@ User user = (User)session.getAttribute("user");
 						if(user.getUUID().equals(poll.getCreatorID())){
 					%>
 							<closePoll><%=poll.getId()%></closePoll>
-							<editPoll><%=poll.getId()%></editPoll>
 					<%
 						}
 					}
@@ -78,7 +77,6 @@ User user = (User)session.getAttribute("user");
 				</info>
 				<buttons>
 					<%if(userpoll.getStatus().equals("Open")){%><closePoll><%=userpoll.getId()%></closePoll><%}%>
-					<editPoll><%=userpoll.getId()%></editPoll>
 					<results><%=userpoll.getId()%></results>
 					<%if(userpoll.getStatus().equals("Open")){%>
 						<openPoll><%=userpoll.getId()%></openPoll>

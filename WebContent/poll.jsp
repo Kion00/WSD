@@ -34,6 +34,7 @@ if(id == null){
 		<location><%=poll.getLocation()%></location>
 		<description><%=poll.getDescription()%></description>
 	</info>
+	<%if(poll.getStatus().equals("Open")){%>
 	<myform action="update.jsp" method="POST">
 		<times>
 		<%
@@ -57,4 +58,7 @@ if(id == null){
 		<%}%>
 		<button id="<%=id%>">Submit Times</button>
 	</myform>
+	<%}else{%>
+	<closed></closed>
+	<%}%>
 </page>

@@ -9,7 +9,7 @@ String password = request.getParameter("password");
 PollApplication pollApp = (PollApplication)session.getAttribute("pollApp");
 if(pollApp == null){
 	System.out.println("pollApp was null, redirecting");
-	%><jsp:forward page="/index.jsp"/><%
+	response.sendRedirect("index.jsp");
 }
 
 if(pollApp.login(email, password) != null){

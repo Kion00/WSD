@@ -114,5 +114,9 @@
 		<input type="hidden" name="submission" value="true"/>
 		<button type="submit" name="id" value="{@id}"><xsl:apply-templates /></button>
 	</xsl:template>
+	
+	<xsl:template match="closed">
+		<p><b>This poll is closed.</b></p>
+	</xsl:template>
 
 </xsl:stylesheet>
