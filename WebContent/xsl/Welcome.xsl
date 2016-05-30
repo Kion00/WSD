@@ -4,7 +4,7 @@
 		<html>
 			<head>
 				<title><xsl:value-of select="@title"/></title>
-				
+								
 			</head>
 			<body>
 			<center>
